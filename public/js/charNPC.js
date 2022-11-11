@@ -50,6 +50,7 @@ let character={
    /*Strength is stats[0], dexterity is stats[1], constitution is stats[2], 
    intelligence is stats[3], wisdom is stats[4], charisma is stats[5].
 */
+
     statMods:[0, 0, 0, 0, 0, 0], 
      /*Strength modifier is statmods[0], dexterity modifier is statmods[1], 
       constitution modifier is statmods[2], intelligence modifier is statmods[3], 
