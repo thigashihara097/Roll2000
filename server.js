@@ -19,10 +19,8 @@ app.use('/img', express.static(__dirname + 'public/img'));
 
 // A route definition
 app.get("/", (req, res) => {
-    res.sendFile(__dirname + '/views/index.html');
-});
-
-
+    res.sendFile(__dirname + '/views/boardMaker.html');
+})
 
 
 // starts web server listening on localhost at port 3000
