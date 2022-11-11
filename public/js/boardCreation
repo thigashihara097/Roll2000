@@ -4,11 +4,13 @@ import("board.js");
 addEventListener("DOMContentLoaded", main);
 
 function main() {
+    console.log("loaded");
     // Submit button listener
     document.querySelector("button").addEventListener("click", createBoard);
 
     // Create a new board
     function createBoard() {
+        console.log("click");
         let b = new board();
         b.width = document.querySelector("#width").value;
         b.height = document.querySelector("#height").value;
