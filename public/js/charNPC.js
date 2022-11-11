@@ -31,8 +31,12 @@ tempHp:5,
 /*hitDice: roll 1d10
 */ 
 deathSavesSuccesses:0,
-deathSavesFails:0
-
+deathSavesFails:0,
+personalityTraits:[], 
+ideals:[], 
+bonds:[], 
+flaws:[], 
+featuresTraits:[]
 
 };
 
@@ -72,8 +76,12 @@ tempHp:10,
 /*hitDice: roll 1d10
 */ 
 deathSavesSuccesses:0,
-deathSavesFails:0
-
+deathSavesFails:0,
+personalityTraits:[], 
+ideals:[], 
+bonds:[], 
+flaws:[], 
+featuresTraits:[]
 
 };
 
