@@ -11,7 +11,7 @@ let npc={
       constitution modifier is statmods[2], intelligence modifier is statmods[3], 
       wisdom modifier is statmods[4], charisma is statmods[5].
 */
-    moreStats:[0, 0, 0],
+    moreStats:[0, 0, 2],
     /* moreStats[0] is perception, moreStats[1] is inspiration and moreStats[2] is 
     proficiency bonus. 
     */
@@ -55,7 +55,7 @@ let character={
       constitution modifier is statmods[2], intelligence modifier is statmods[3], 
       wisdom modifier is statmods[4], charisma is statmods[5].
 */
-moreStats:[0, 0, 0],
+moreStats:[0, 0, 2],
 /* moreStats[0] is perception, moreStats[1] is inspiration and moreStats[2] is 
 proficiency bonus. 
 */
