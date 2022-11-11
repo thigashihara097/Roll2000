@@ -1,0 +1,13 @@
+// Import board and tile classes
+import("board.js");
+
+// Submit button listener
+document.querySelector("button").addEventListener("click", createBoard);
+
+// Create a new board
+function createBoard() {
+    let b = new board();
+    b.width = document.querySelector("#width").value;
+    b.height = document.querySelector("#height").value;
+    b.initializeBoard();
+}
