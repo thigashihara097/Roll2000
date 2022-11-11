@@ -1,6 +1,6 @@
 //Create object for storing NPC data
 let npc={
-    name: "Melody", class: "bard",  level:1, background: "musician", dmname: "See Sharp", 
+    name: "Melody", class: "Bard",  level:1, background: "Musician", dmname: "See Sharp", 
     race: "Human", alignment: "Chaotic good", experience:0, 
    stats:[0, 0, 0, 0, 0, 0],
    /*Strength is stats[0], dexterity is stats[1], constitution is stats[2], 
@@ -15,12 +15,19 @@ let npc={
     /* moreStats[0] is perception, moreStats[1] is inspiration and moreStats[2] is 
     proficiency bonus. 
     */
-    saveThrows:[0, 0, 0, 0, 0, 0]
+    saveThrows:[0, 0, 0, 0, 0, 0],
 /* saveThrows[0] is strength saving throw, saveThrows[1] is dexterity saving throw, 
 saveThrows[2] is constitution saving throw, saveThrows[3] is intelligence saving throw, 
 saveThrows[4] is wisdom saving throw and saveThrows[5] is charisma saving throw.
 */
-
+    profLang:["Common"], 
+/* profLang is all the other proficiencies and languages
+*/
+movSpeed:30, 
+aC:16,
+initiative:statMods[1],
+hP:10, 
+tempHp:10,
 
 
 };
@@ -29,7 +36,7 @@ saveThrows[4] is wisdom saving throw and saveThrows[5] is charisma saving throw.
 
 //Create object for storing character sheet info
 let character={
-    name: "Gandalf",  class: "wizard",  level:1, background: "Maair", playername: "Eru", 
+    name: "Gandalf",  class: "Wizard",  level:1, background: "Maair", playername: "Eru", 
     race: "Aasimar", alignment: "Lawful good", experience:0,
     stats:[0, 0, 0, 0, 0, 0],
    /*Strength is stats[0], dexterity is stats[1], constitution is stats[2], 
@@ -44,15 +51,25 @@ moreStats:[0, 0, 0],
 /* moreStats[0] is perception, moreStats[1] is inspiration and moreStats[2] is 
 proficiency bonus. 
 */
-saveThrows:[0, 0, 0, 0, 0, 0]
+saveThrows:[0, 0, 0, 0, 0, 0],
 /* saveThrows[0] is strength saving throw, saveThrows[1] is dexterity saving throw, 
 saveThrows[2] is constitution saving throw, saveThrows[3] is intelligence saving throw, 
 saveThrows[4] is wisdom saving throw and saveThrows[5] is charisma saving throw.
 */
 
-
+profLang:["Common"], 
+/* profLang is all the other proficiencies and languages
+*/
+movSpeed:30,
+aC:23,
+initiative:statMods[1],
+hP:30, 
+tempHp:10,
+/*hitDice: roll 1d10
+*/ 
+deathSavesSuccesses:0,
+deathSavesFails:0
 
 
 };
-
 
