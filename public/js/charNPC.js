@@ -23,11 +23,15 @@ saveThrows[4] is wisdom saving throw and saveThrows[5] is charisma saving throw.
     profLang:["Common"], 
 /* profLang is all the other proficiencies and languages
 */
-movSpeed:30, 
-aC:16,
+movSpeed:20,
+aC:10,
 initiative:statMods[1],
-hP:10, 
-tempHp:10,
+hP:20, 
+tempHp:5,
+/*hitDice: roll 1d10
+*/ 
+deathSavesSuccesses:0,
+deathSavesFails:0
 
 
 };
