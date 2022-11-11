@@ -9,7 +9,7 @@ let board = {
     // Board coords are (width, height)
     initializeBoard: function() {
         if(Number.isNaN(width) || Number.isNaN(height)) {
-             throw console.error("Nan detected");
+             throw console.error("NaN detected");
         }
         for(let i = 0; i < w; i++) {
             tiles[i] = [];
