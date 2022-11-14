@@ -1,5 +1,5 @@
 // Import board and tile classes
-import("board.js");
+//import("board.js");
 
 addEventListener("DOMContentLoaded", main);
 
