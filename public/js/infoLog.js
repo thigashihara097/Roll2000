@@ -1,4 +1,4 @@
-// THIS IS INCOMPLETE I WILL COME BACK TO THIS LATER
+// THIS IS INCOMPLETE I will come back to this later when there are inputs.
 
 // import {roll} from "/js/something.js"
 // import {name} from "/js/something.js"
