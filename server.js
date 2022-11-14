@@ -22,6 +22,7 @@ app.get("/", (req, res) => {
     res.sendFile(__dirname + '/views/index.html');
 })
 
+// Route to boardMaker
 app.get("/boardMaker", (req, res) => {
     res.sendFile(__dirname + '/views/boardMaker.html');
 })
