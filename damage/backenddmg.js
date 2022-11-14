@@ -73,7 +73,7 @@ NPC, PC or DMPC, providing the user with prompts at each turn
 depending on which it is.
 */
 
-function initList(combatants){
+/*function initList(combatants){
     
     for(let i=0; i<combatants.length; i++){
         combatants[i].curinit=rolld20()+combatants.initiative;
@@ -91,4 +91,4 @@ function initList(combatants){
             user prompt
         }
     }
-}
+}*/
