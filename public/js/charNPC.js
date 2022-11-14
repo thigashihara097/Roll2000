@@ -4,7 +4,7 @@ addEventListener("DOMContentLoaded", characterInfo());
 function characterInfo(){
 //Create html elements, get info from elements and store them in objects
 //Get info from objects and use it for mods, prof bonus, spells, etc.
-
+//Store it in npc or character depending upon radio button selected
 
 
 
