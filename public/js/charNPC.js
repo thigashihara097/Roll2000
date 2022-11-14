@@ -1,4 +1,15 @@
 //Create object for storing NPC data
+addEventListener("DOMContentLoaded", characterInfo());
+
+function characterInfo(){
+//Create html elements, get info from elements and store them in objects
+//Get info from objects and use it for mods, prof bonus, spells, etc.
+
+
+
+
+}
+
 let npc={
     name: "Melody", class: "Bard",  level:1, background: "Musician", dmname: "See Sharp", 
     race: "Human", alignment: "Chaotic good", experience:0, 
