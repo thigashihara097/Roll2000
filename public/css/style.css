@@ -2,6 +2,10 @@
     width: 15%; 
 }
 
+body {
+    background-color: gray;
+}
+
 .nav {
     overflow: hidden;
     background-color: black;
@@ -16,12 +20,14 @@
     font-size: 17px;
 }
 
-.topnav a:hover {
-    color:white;
+.nav a:hover {
+    background-color: white;
+    color: black;
 }
-
-.topnav a.active {
+  
+.nav a.active {
     background-color: purple;
+    color: white;
 }
 
 
