@@ -29,7 +29,7 @@ saveThrows[4] is wisdom saving throw and saveThrows[5] is charisma saving throw.
 */
 movSpeed:20,
 aC:10,
-initiative:statMods[1],
+initiative:1,
 hP:20, 
 tempHp:5,
 /*hitDice: roll 1d10
@@ -76,7 +76,7 @@ profLang:[],
 */
 movSpeed:30,
 aC:23,
-initiative:statMods[1],
+initiative:1,
 hP:30, 
 tempHp:10,
 /*hitDice: roll 1d10
