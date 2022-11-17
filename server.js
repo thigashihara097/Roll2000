@@ -27,6 +27,11 @@ app.get("/boardMaker", (req, res) => {
     res.sendFile(__dirname + '/views/boardMaker.html');
 })
 
+// Route to character
+app.get("/character", (req, res) => {
+    res.sendFile(__dirname + '/views/character.html');
+})
+
 // starts web server listening on localhost at port 3000
 app.listen(port, () => {
     console.log('Listening on port 3000...');

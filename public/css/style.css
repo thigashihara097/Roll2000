@@ -3,7 +3,7 @@
 }
 
 body {
-    background-color: gray;
+    background-color: white;
 }
 
 .nav {
@@ -21,7 +21,7 @@ body {
 }
 
 .nav a:hover {
-    background-color: white;
+    background-color: lightgray;
     color: black;
 }
   
