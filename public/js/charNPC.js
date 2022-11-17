@@ -1,18 +1,11 @@
 //Create object for storing NPC data
-addEventListener("DOMContentLoaded", characterInfo());
+addEventListener("DOMContentLoaded", characterInfo);
 
-function characterInfo(){
-//Create html elements, get info from elements and store them in objects
-//Get info from objects and use it for mods, prof bonus, spells, etc.
-//Store it in npc or character depending upon radio button selected
-
-
-
-}
 
 let npc={
-    name: "Melody", class: "Bard",  level:1, background: "Musician", dmname: "See Sharp", 
-    race: "Human", alignment: "Chaotic good", experience:0, 
+    name: "", class: "",  level:1, dmname: "", 
+    //Add background later 
+    race: "", alignment: "", experience:0, 
    stats:[0, 0, 0, 0, 0, 0],
    /*Strength is stats[0], dexterity is stats[1], constitution is stats[2], 
    intelligence is stats[3], wisdom is stats[4], charisma is stats[5].
@@ -31,7 +24,7 @@ let npc={
 saveThrows[2] is constitution saving throw, saveThrows[3] is intelligence saving throw, 
 saveThrows[4] is wisdom saving throw and saveThrows[5] is charisma saving throw.
 */
-    profLang:["Common"], 
+    profLang:[], 
 /* profLang is all the other proficiencies and languages
 */
 movSpeed:20,
@@ -55,8 +48,9 @@ featuresTraits:[]
 
 //Create object for storing character sheet info
 let character={
-    name: "Gandalf",  class: "Wizard",  level:1, background: "Maair", playername: "Eru", 
-    race: "Aasimar", alignment: "Lawful good", experience:0,
+    name: "",  class: "",  level:1, playername: "", 
+    //Add background later 
+    race: "", alignment: "", experience:0,
     stats:[0, 0, 0, 0, 0, 0],
    /*Strength is stats[0], dexterity is stats[1], constitution is stats[2], 
    intelligence is stats[3], wisdom is stats[4], charisma is stats[5].
@@ -77,7 +71,7 @@ saveThrows[2] is constitution saving throw, saveThrows[3] is intelligence saving
 saveThrows[4] is wisdom saving throw and saveThrows[5] is charisma saving throw.
 */
 
-profLang:["Common"], 
+profLang:[], 
 /* profLang is all the other proficiencies and languages
 */
 movSpeed:30,
@@ -96,4 +90,40 @@ flaws:[],
 featuresTraits:[]
 
 };
+
+
+//Actually stores the info
+function characterInfo(){
+//Create html elements, get info from elements and store them in objects
+//Get info from objects and use it for mods, prof bonus, spells, etc.
+//Store it in npc or character depending upon selection
+const a=document.getElementById("Name"); 
+const b=document.getElementById("characterClass");
+const c=document.getElementById("level");
+const d=document.getElementById("playerName");
+const e=document.getElementById("r");
+const f=document.getElementById("a");
+const g=document.getElementById("exp");
+const h=document.getElementById("ct");
+if(h=="Character"){
+character.name=a;
+character.class=b;
+character.level=c;
+character.playername=d;
+character.race=e;
+character.alignment=f;
+character.experience=g;
+character.profLang.push("Common");
+}else if(h=="NPC"){
+    npc.name=a;
+    npc.class=b;
+    npc.level=c;
+    npc.playername=d;
+    npc.race=e;
+    npc.alignment=f;
+    npc.experience=g;
+    npc.profLang.push("Common");
+
+}
+}
 

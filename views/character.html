@@ -3,26 +3,38 @@
     <head>
         <meta charset="UTF-8">
         <title>Characters</title>
-        <script src="charNPC.js"></script>
+        <script src="/js/charNPC.js"></script>
     </head>
 <body>
 <h1>My Characters</h1>
-<label for="Name">Name:</label>
+<p><label for="Name">Name:</label>
 <input type="text" id="Name">
+<label for="characterClass">Class:</label>
 <select name="class" id="characterClass">
 <option value="paladin">Paladin</option>
 </select> 
+<label for="level">Level:</label>
 <input type="number" name="quantity" id="level" min="1" max="20">
-<label for="playerName">Player/DM Name</label>
+<label for="playerName">Player/DM Name:</label>
 <input type="text" id="playerName">
-<div>
-</div>
-<select name="race">
-    <option value="human">Human</option>
-    </select> 
-<select name="alighment">
-        <option value="chaotic neutral">Chaotic Neutral</option>
+</p>
+<p>
+ <label for="r">Race:</label>
+    <select name="race" id="r">
+        <option value="human">Human</option>
         </select> 
-<input type="number" name="generic" id="exp" min="0">     
+<label for="a">Alignment:</label>
+    <select name="alighment" id="a">
+            <option value="chaotic neutral">Chaotic Neutral</option>
+            </select> 
+<label for="exp">Experience Points:</label>
+    <input type="number" name="generic" id="exp" min="0">  
+    <label for="ct">Character or NPC:</label>
+    <select name="characterType" id="ct">
+            <option value="Character">Character</option>
+            <option value="NPC">NPC</option>
+            </select>   
+</p>
+<p></p>  
 </body>
 </html>
