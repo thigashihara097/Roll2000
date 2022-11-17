@@ -97,33 +97,35 @@ function characterInfo(){
 //Create html elements, get info from elements and store them in objects
 //Get info from objects and use it for mods, prof bonus, spells, etc.
 //Store it in npc or character depending upon selection
-const a=document.getElementById("Name"); 
-const b=document.getElementById("characterClass");
-const c=document.getElementById("level");
-const d=document.getElementById("playerName");
-const e=document.getElementById("r");
-const f=document.getElementById("a");
-const g=document.getElementById("exp");
-const h=document.getElementById("ct");
-if(h=="Character"){
-character.name=a;
-character.class=b;
-character.level=c;
-character.playername=d;
-character.race=e;
-character.alignment=f;
-character.experience=g;
-character.profLang.push("Common");
-}else if(h=="NPC"){
-    npc.name=a;
-    npc.class=b;
-    npc.level=c;
-    npc.playername=d;
-    npc.race=e;
-    npc.alignment=f;
-    npc.experience=g;
-    npc.profLang.push("Common");
-
-}
+const submit= document.querySelector("button");
+submit.addEventListener("click", function (event){
+    const a=document.getElementById("Name"); 
+    const b=document.getElementById("characterClass");
+    const c=document.getElementById("level");
+    const d=document.getElementById("playerName");
+    const e=document.getElementById("r");
+    const f=document.getElementById("a");
+    const g=document.getElementById("exp");
+    const h=document.getElementById("ct");
+    if(h=="Character"){
+    character.name=a;
+    character.class=b;
+    character.level=c;
+    character.playername=d;
+    character.race=e;
+    character.alignment=f;
+    character.experience=g;
+    character.profLang.push("Common");
+    }else if(h=="NPC"){
+        npc.name=a;
+        npc.class=b;
+        npc.level=c;
+        npc.playername=d;
+        npc.race=e;
+        npc.alignment=f;
+        npc.experience=g;
+        npc.profLang.push("Common");
+    }
+})
 }
 
