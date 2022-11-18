@@ -103,14 +103,14 @@ function characterInfo(){
 //Store it in npc or character depending upon selection
 
 
-    const a=document.getElementById("Name"); 
-    const b=document.getElementById("characterClass");
-    const c=document.getElementById("level");
-    const d=document.getElementById("playerName");
-    const e=document.getElementById("r");
-    const f=document.getElementById("a");
-    const g=document.getElementById("exp");
-    const h=document.getElementById("ct");
+    let a=document.getElementById("Name"); 
+    let b=document.getElementById("characterClass");
+    let c=document.getElementById("level");
+    let d=document.getElementById("playerName");
+    let e=document.getElementById("r");
+    let f=document.getElementById("a");
+    let g=document.getElementById("exp");
+    let h=document.getElementById("ct");
     if(h=="Character"){
     character.name=a;
     character.class=b;
