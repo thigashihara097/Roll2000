@@ -119,6 +119,7 @@ function characterInfo(){
     character.race=e.value;
     character.alignment=f.value;
     character.experience=g.value;
+    return character;
     character.profLang.push("Common");
     }else if(h.value=="NPC"){
         npc.name=a.value;
@@ -129,7 +130,10 @@ function characterInfo(){
         npc.alignment=f.value;
         npc.experience=g.value;
         npc.profLang.push("Common");
+        return npc;
     }
 }
+
+
 
 
