@@ -111,7 +111,7 @@ function characterInfo(){
     let f=document.getElementById("a");
     let g=document.getElementById("exp");
     let h=document.getElementById("ct");
-    if(h=="Character"){
+    if(h.value=="Character"){
     character.name=a;
     character.class=b;
     character.level=c;
@@ -120,7 +120,7 @@ function characterInfo(){
     character.alignment=f;
     character.experience=g;
     character.profLang.push("Common");
-    }else if(h=="NPC"){
+    }else if(h.value=="NPC"){
         npc.name=a;
         npc.class=b;
         npc.level=c;
