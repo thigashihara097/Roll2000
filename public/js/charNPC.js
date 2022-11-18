@@ -163,6 +163,7 @@ function characterInfo(){
         let chMod=(cha.value-10)/2;
         character.statMods.push(Math.round(sMod), Math.round(dMod), Math.round(cMod), Math.round(iMod),
         Math.round(wMod), Math.round(chMod));
+        character.moreStats[0]=10+character.statMods[4];
     }else if(h.value=="NPC"){
         npc.name=a.value;
         npc.class=b.value;
@@ -181,6 +182,7 @@ function characterInfo(){
         let chMod=(cha.value-10)/2;
         npc.statMods.push(Math.round(sMod), Math.round(dMod), Math.round(cMod), Math.round(iMod),
         Math.round(wMod), Math.round(chMod));
+        npc.moreStats[0]=10+npc.statMods[4];
     }
 }
 
