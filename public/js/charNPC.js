@@ -1,6 +1,10 @@
 //Create object for storing NPC data
-addEventListener("DOMContentLoaded", characterInfo);
+addEventListener('DOMContentLoaded', button);
 
+function button(){
+let submit= document.querySelector('button');
+submit.addEventListener("click", characterInfo);
+}
 
 let npc={
     name: "", class: "",  level:1, dmname: "", 
@@ -97,8 +101,8 @@ function characterInfo(){
 //Create html elements, get info from elements and store them in objects
 //Get info from objects and use it for mods, prof bonus, spells, etc.
 //Store it in npc or character depending upon selection
-const submit= document.querySelector("button");
-submit.addEventListener("click", function (event){
+
+
     const a=document.getElementById("Name"); 
     const b=document.getElementById("characterClass");
     const c=document.getElementById("level");
@@ -126,6 +130,6 @@ submit.addEventListener("click", function (event){
         npc.experience=g;
         npc.profLang.push("Common");
     }
-})
 }
+
 
