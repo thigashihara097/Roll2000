@@ -112,22 +112,22 @@ function characterInfo(){
     let g=document.getElementById("exp");
     let h=document.getElementById("ct");
     if(h.value=="Character"){
-    character.name=a;
-    character.class=b;
-    character.level=c;
-    character.playername=d;
-    character.race=e;
-    character.alignment=f;
-    character.experience=g;
+    character.name=a.value;
+    character.class=b.value;
+    character.level=c.value;
+    character.playername=d.value;
+    character.race=e.value;
+    character.alignment=f.value;
+    character.experience=g.value;
     character.profLang.push("Common");
     }else if(h.value=="NPC"){
-        npc.name=a;
-        npc.class=b;
-        npc.level=c;
-        npc.playername=d;
-        npc.race=e;
-        npc.alignment=f;
-        npc.experience=g;
+        npc.name=a.value;
+        npc.class=b.value;
+        npc.level=c.value;
+        npc.playername=d.value;
+        npc.race=e.value;
+        npc.alignment=f.value;
+        npc.experience=g.value;
         npc.profLang.push("Common");
     }
 }
