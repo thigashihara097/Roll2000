@@ -119,8 +119,8 @@ function characterInfo(){
     character.race=e.value;
     character.alignment=f.value;
     character.experience=g.value;
-    return character;
     character.profLang.push("Common");
+    return character;
     }else if(h.value=="NPC"){
         npc.name=a.value;
         npc.class=b.value;
