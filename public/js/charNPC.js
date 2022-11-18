@@ -7,9 +7,7 @@ submit.addEventListener("click", characterInfo);
 }
 
 function returnCInfo(){
-    let v=character.name;
-    ['v']=[character];
-    return v; 
+    return character;
 }
 
 function returnNInfo(){
