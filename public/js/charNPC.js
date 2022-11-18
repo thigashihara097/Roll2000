@@ -38,11 +38,11 @@ npc.spellCastingClass=npc.class;
 let npc={
     name: "", class: "",  level:1, dmname: "", 
     race: "", alignment: "", experience:0, 
-   stats:[0, 0, 0, 0, 0, 0],
+   stats:[],
    /*Strength is stats[0], dexterity is stats[1], constitution is stats[2], 
    intelligence is stats[3], wisdom is stats[4], charisma is stats[5].
 */
-    statMods:[0, 0, 0, 0, 0, 0], 
+    statMods:[], 
       /*Strength modifier is statmods[0], dexterity modifier is statmods[1], 
       constitution modifier is statmods[2], intelligence modifier is statmods[3], 
       wisdom modifier is statmods[4], charisma is statmods[5].
@@ -95,12 +95,12 @@ lvl9:[]
 let character={
     name: "",  class: "",  level:1, playername: "", 
     race: "", alignment: "", experience:0,
-    stats:[0, 0, 0, 0, 0, 0],
+    stats:[],
    /*Strength is stats[0], dexterity is stats[1], constitution is stats[2], 
    intelligence is stats[3], wisdom is stats[4], charisma is stats[5].
 */
 
-    statMods:[0, 0, 0, 0, 0, 0], 
+    statMods:[], 
      /*Strength modifier is statmods[0], dexterity modifier is statmods[1], 
       constitution modifier is statmods[2], intelligence modifier is statmods[3], 
       wisdom modifier is statmods[4], charisma is statmods[5].
@@ -175,7 +175,7 @@ function characterInfo(){
     character.alignment=f.value;
     character.experience=g.value;
     character.profLang.push("Common");
-    character.stats.push(str, dex, con, int, wis, cha);
+    character.stats.push(str.value, dex.value, con.value, int.value, wis.value, cha.value);
     }else if(h.value=="NPC"){
         npc.name=a.value;
         npc.class=b.value;
@@ -185,7 +185,7 @@ function characterInfo(){
         npc.alignment=f.value;
         npc.experience=g.value;
         npc.profLang.push("Common");
-        npc.stats.push(str, dex, con, int, wis, cha);
+        npc.stats.push(str.value, dex.value, con.value, int.value, wis.value, cha.value);
     }
 }
 
