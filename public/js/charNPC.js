@@ -145,6 +145,12 @@ function characterInfo(){
      let int=document.getElementById("int");
      let wis=document.getElementById("wis");
      let cha=document.getElementById("cha");
+     let ins=document.getElementById("ins");
+     let pb=document.getElementById("prof");
+     let arc=document.getElementById("armor");
+     let speed=document.getElementById("speed");
+    let hitPoints=document.getElementById("hp");
+    let tempHitPoints=document.getElementById("thp");
     if(h.value=="Character"){
     character.name=a.value;
     character.class=b.value;
@@ -164,6 +170,13 @@ function characterInfo(){
         character.statMods.push(Math.round(sMod), Math.round(dMod), Math.round(cMod), Math.round(iMod),
         Math.round(wMod), Math.round(chMod));
         character.moreStats[0]=10+character.statMods[4];
+        character.moreStats[1]=ins.value;
+        character.moreStats[2]=pb.value;
+        character.aC=arc.value;
+        character.initiative=Math.round(dMod);
+        character.movSpeed=speed.value;
+        character.hP=hitPoints.value;
+        character.tempHp=tempHitPoints.value;
     }else if(h.value=="NPC"){
         npc.name=a.value;
         npc.class=b.value;
@@ -183,6 +196,13 @@ function characterInfo(){
         npc.statMods.push(Math.round(sMod), Math.round(dMod), Math.round(cMod), Math.round(iMod),
         Math.round(wMod), Math.round(chMod));
         npc.moreStats[0]=10+npc.statMods[4];
+        npc.moreStats[1]=ins.value;
+        npc.moreStats[2]=pb.value;
+        npc.aC=arc.value;
+        npc.initiative=Math.round(dMod);
+        npc.movSpeed=speed.value;
+        npc.hP=hitPoints.value;
+        npc.tempHp=tempHitPoints.value;
     }
 }
 
