@@ -10,10 +10,30 @@ function returnCInfo(){
     return character;
 }
 
-function returnNInfo(){
-    
+function returnNInfo(){ 
     return npc;  
 }
+function calcStatModsC(){
+    for (let i=0; i<character.stats.length; i++){
+    let s=character.stats[i]; 
+    s=(s-10)/2;
+    character.statMods.push[s];
+    }
+    character.spellCastingClass=character.class;
+}
+function calcStatModsNPC(){
+    for (let i=0; i<npc.stats.length; i++){
+        let z=npc.stats[i]; 
+        z=(z-10)/2;
+        character.statMods.push[z];
+
+}
+npc.spellCastingClass=npc.class;
+}
+
+
+
+
 
 let npc={
     name: "", class: "",  level:1, dmname: "", 
@@ -52,8 +72,21 @@ personalityTraits:[],
 ideals:[], 
 bonds:[], 
 flaws:[], 
-featuresTraits:[]
-
+featuresTraits:[],
+spellCastingClass:"",
+spellCastingAbility:1,
+spellDC:1, 
+spellAttackBonus:1, 
+cantrips:[], 
+lvl1:[], 
+lvl2:[], 
+lvl3:[], 
+lvl4:[], 
+lvl5:[], 
+lvl6:[], 
+lvl7:[], 
+lvl8:[], 
+lvl9:[]
 };
 
 
@@ -98,7 +131,21 @@ personalityTraits:[],
 ideals:[], 
 bonds:[], 
 flaws:[], 
-featuresTraits:[]
+featuresTraits:[],
+spellCastingClass:"",
+spellCastingAbility:1,
+spellDC:1, 
+spellAttackBonus:1, 
+cantrips:[], 
+lvl1:[], 
+lvl2:[], 
+lvl3:[], 
+lvl4:[], 
+lvl5:[], 
+lvl6:[], 
+lvl7:[], 
+lvl8:[], 
+lvl9:[]
 
 };
 
@@ -113,6 +160,12 @@ function characterInfo(){
     let f=document.getElementById("a");
     let g=document.getElementById("exp");
     let h=document.getElementById("ct");
+    let str=document.getElementById("str");
+    let dex=document.getElementById("dex");
+    let con=document.getElementById("con");
+     let int=document.getElementById("int");
+     let wis=document.getElementById("wis");
+     let cha=document.getElementById("cha");
     if(h.value=="Character"){
     character.name=a.value;
     character.class=b.value;
@@ -122,6 +175,7 @@ function characterInfo(){
     character.alignment=f.value;
     character.experience=g.value;
     character.profLang.push("Common");
+    character.stats.push(str, dex, con, int, wis, cha);
     }else if(h.value=="NPC"){
         npc.name=a.value;
         npc.class=b.value;
@@ -131,6 +185,7 @@ function characterInfo(){
         npc.alignment=f.value;
         npc.experience=g.value;
         npc.profLang.push("Common");
+        npc.stats.push(str, dex, con, int, wis, cha);
     }
 }
 
