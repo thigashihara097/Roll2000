@@ -14,21 +14,21 @@ function returnNInfo(){
     return npc;  
 }
 function calcStatModsC(){
-    for (let i=0; i<character.stats.length; i++){
+    for (let i=0; i<6; i++){
     let s=character.stats[i]; 
-    s=(s-10)/2;
-    character.statMods.push[s];
+    let ns=(s-10)/2;
+    character.statMods.push[ns];
     }
-    character.spellCastingClass=character.class;
+    //character.spellCastingClass=character.class;
 }
 function calcStatModsNPC(){
-    for (let i=0; i<npc.stats.length; i++){
+    for (let i=0; i<6; i++){
         let z=npc.stats[i]; 
-        z=(z-10)/2;
-        character.statMods.push[z];
+        let q=(z-10)/2;
+        character.statMods.push[q];
 
 }
-npc.spellCastingClass=npc.class;
+//npc.spellCastingClass=npc.class;
 }
 
 
