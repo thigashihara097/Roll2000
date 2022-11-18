@@ -7,16 +7,18 @@ submit.addEventListener("click", characterInfo);
 }
 
 function returnCInfo(){
-  return character; 
+    let v=character.name;
+    object['v']=object[character];
+    return v; 
 }
 
 function returnNInfo(){
-  return npc;  
+    
+    return npc;  
 }
 
 let npc={
     name: "", class: "",  level:1, dmname: "", 
-    //Add background later 
     race: "", alignment: "", experience:0, 
    stats:[0, 0, 0, 0, 0, 0],
    /*Strength is stats[0], dexterity is stats[1], constitution is stats[2], 
@@ -61,7 +63,6 @@ featuresTraits:[]
 //Create object for storing character sheet info
 let character={
     name: "",  class: "",  level:1, playername: "", 
-    //Add background later 
     race: "", alignment: "", experience:0,
     stats:[0, 0, 0, 0, 0, 0],
    /*Strength is stats[0], dexterity is stats[1], constitution is stats[2], 
@@ -106,11 +107,6 @@ featuresTraits:[]
 
 //Actually stores the info
 function characterInfo(){
-//Create html elements, get info from elements and store them in objects
-//Get info from objects and use it for mods, prof bonus, spells, etc.
-//Store it in npc or character depending upon selection
-
-
     let a=document.getElementById("Name"); 
     let b=document.getElementById("characterClass");
     let c=document.getElementById("level");
@@ -128,7 +124,6 @@ function characterInfo(){
     character.alignment=f.value;
     character.experience=g.value;
     character.profLang.push("Common");
-    returnCInfo;
     }else if(h.value=="NPC"){
         npc.name=a.value;
         npc.class=b.value;
@@ -138,7 +133,6 @@ function characterInfo(){
         npc.alignment=f.value;
         npc.experience=g.value;
         npc.profLang.push("Common");
-        returnNInfo;
     }
 }
 
