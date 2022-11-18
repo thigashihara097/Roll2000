@@ -124,7 +124,7 @@ function characterInfo(){
         npc.name=a.value;
         npc.class=b.value;
         npc.level=c.value;
-        npc.playername=d.value;
+        npc.dmname=d.value;
         npc.race=e.value;
         npc.alignment=f.value;
         npc.experience=g.value;
