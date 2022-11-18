@@ -13,27 +13,6 @@ function returnCInfo(){
 function returnNInfo(){ 
     return npc;  
 }
-function calcStatModsC(){
-    for (let i=0; i<6; i++){
-    let s=character.stats[i]; 
-    let ns=(s-10)/2;
-    character.statMods.push[ns];
-    }
-    //character.spellCastingClass=character.class;
-}
-function calcStatModsNPC(){
-    for (let i=0; i<6; i++){
-        let z=npc.stats[i]; 
-        let q=(z-10)/2;
-        character.statMods.push[q];
-
-}
-//npc.spellCastingClass=npc.class;
-}
-
-
-
-
 
 let npc={
     name: "", class: "",  level:1, dmname: "", 
@@ -176,6 +155,14 @@ function characterInfo(){
     character.experience=g.value;
     character.profLang.push("Common");
     character.stats.push(str.value, dex.value, con.value, int.value, wis.value, cha.value);
+    let sMod=(str.value-10)/2;
+        let dMod=(dex.value-10)/2;
+        let cMod=(con.value-10)/2;
+        let iMod=(int.value-10)/2;
+        let wMod=(wis.value-10)/2;
+        let chMod=(cha.value-10)/2;
+        character.statMods.push(Math.round(sMod), Math.round(dMod), Math.round(cMod), Math.round(iMod),
+        Math.round(wMod), Math.round(chMod));
     }else if(h.value=="NPC"){
         npc.name=a.value;
         npc.class=b.value;
@@ -186,6 +173,14 @@ function characterInfo(){
         npc.experience=g.value;
         npc.profLang.push("Common");
         npc.stats.push(str.value, dex.value, con.value, int.value, wis.value, cha.value);
+        let sMod=(str.value-10)/2;
+        let dMod=(dex.value-10)/2;
+        let cMod=(con.value-10)/2;
+        let iMod=(int.value-10)/2;
+        let wMod=(wis.value-10)/2;
+        let chMod=(cha.value-10)/2;
+        npc.statMods.push(Math.round(sMod), Math.round(dMod), Math.round(cMod), Math.round(iMod),
+        Math.round(wMod), Math.round(chMod));
     }
 }
 
