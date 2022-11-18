@@ -6,6 +6,14 @@ let submit= document.querySelector('button');
 submit.addEventListener("click", characterInfo);
 }
 
+function returnCInfo(){
+  return character; 
+}
+
+function returnNInfo(){
+  return npc;  
+}
+
 let npc={
     name: "", class: "",  level:1, dmname: "", 
     //Add background later 
@@ -120,7 +128,7 @@ function characterInfo(){
     character.alignment=f.value;
     character.experience=g.value;
     character.profLang.push("Common");
-    return character;
+    returnCInfo;
     }else if(h.value=="NPC"){
         npc.name=a.value;
         npc.class=b.value;
@@ -130,7 +138,7 @@ function characterInfo(){
         npc.alignment=f.value;
         npc.experience=g.value;
         npc.profLang.push("Common");
-        return npc;
+        returnNInfo;
     }
 }
 
