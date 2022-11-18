@@ -8,7 +8,7 @@ submit.addEventListener("click", characterInfo);
 
 function returnCInfo(){
     let v=character.name;
-    object['v']=object[character];
+    ['v']=[character];
     return v; 
 }
 
