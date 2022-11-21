@@ -30,9 +30,40 @@ body {
     color: white;
 }
 
+.nav a.active:hover {
+    background-color: blue;
+    color: white;
+}
 
+.nav a.inLog {
+    float: right;
+    background-color: rgb(0, 0, 255);
+    color: white;
+}
+
+.nav a.inLog:hover {
+    background-color: rgb(179, 0, 255);
+    color: white;
+}
 
 .info-wrapper {
     display: flex;
     
+}
+
+.home-inputs {
+    display: flex;
+    flex-direction: column;
+    background-color: lightgoldenrodyellow;
+    border: 1px black solid;
+    padding: 5px;
+
+}
+
+.home-inputs a {
+    padding: 10px;
+    color: black;
+    text-decoration: none;
+    border: 1px;
+    flex-shrink: 0;
 }
