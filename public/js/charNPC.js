@@ -14,6 +14,12 @@ function returnNInfo(){
     return npc;  
 }
 
+function storeSpells(){
+
+}
+
+
+
 let npc={
     name: "", class: "",  level:1, dmname: "", 
     race: "", alignment: "", experience:0, 
