@@ -15,6 +15,21 @@ function returnNInfo(){
 }
 
 function storeSpells(){
+    
+
+
+
+}
+
+function portInfo(){
+/* This function is for porting info so we don't have to create it. 
+*/
+}
+
+function calcMods(){
+/* This function is for calculating stat modifiers, saving throws and skills. 
+We need these when rolling specific things, such as initiative.  
+*/
 
 }
 
@@ -62,16 +77,7 @@ spellCastingClass:"",
 spellCastingAbility:1,
 spellDC:1, 
 spellAttackBonus:1, 
-cantrips:[], 
-lvl1:[], 
-lvl2:[], 
-lvl3:[], 
-lvl4:[], 
-lvl5:[], 
-lvl6:[], 
-lvl7:[], 
-lvl8:[], 
-lvl9:[]
+
 };
 
 
@@ -121,16 +127,7 @@ spellCastingClass:"",
 spellCastingAbility:1,
 spellDC:1, 
 spellAttackBonus:1, 
-cantrips:[], 
-lvl1:[], 
-lvl2:[], 
-lvl3:[], 
-lvl4:[], 
-lvl5:[], 
-lvl6:[], 
-lvl7:[], 
-lvl8:[], 
-lvl9:[]
+
 
 };
 
