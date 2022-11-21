@@ -31,7 +31,7 @@ function main() {
             this.tiles[i] = [];
             addRow();
             for(let j = 0; j < h; j++) {
-                this.tiles[i][j] = "(" + i + ", " + j + ")";
+                this.tiles[i][j] = Tile("(" + i + ", " + j + ")");
                 addCell(i);
             }
         }
@@ -59,19 +59,19 @@ function main() {
     }
 
     // Tile object
-    function Tile() {
+    function Tile(contents) {
         // Variables
         this.wall = false;
-        this.contents = 0;
+        this.contents = contents;
+    }
 
-        // Make wall method
-        function setWall() {
-            wall = true;
-        }
+    // Make wall Tile method
+    Tile.prototype.setWall = function() {
+        this.wall = true;
+    }
 
-        // Change tile contents method
-        function changeContents() {
-            contents = "a friend";
-        }
+    // Change tile contents Tile method
+    Tile.prototype.changeContents = function() {
+        this.contents = "a friend";
     }
 }
