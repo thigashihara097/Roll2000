@@ -74,4 +74,10 @@ function main() {
     Tile.prototype.changeContents = function() {
         this.contents = "a friend";
     }
+
+    // toString Tile method
+    Tile.prototype.toString = function() {
+        console.log(this.contents);
+        return this.contents;
+    }
 }
