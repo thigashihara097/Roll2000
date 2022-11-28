@@ -7,137 +7,95 @@ const rangeTypeList = ["touch", "self", "ranged", "area of effect", "cone of eff
 const durationTypeList = ["instantaneous", "rounds", "minutes", "hours", "days", "months", "years"];
 
 
-
-let spell = {
-spellName : "",
-detailText : "",
-school : 0, //corresponds to position on schoolList
-level : 0,
-isAttack : false,
-savingThrow : -1, //corresponds to position on savingThrowList
-castingTime : -1,
-hasRitual : false,
-castingType : -1, //corresponds to position on castingTypeList
-range : -1,
-rangeType : -1, //corresponds to position on rangeTypeList
-duration : -1,
-durationType : -1, //corresponds to position on durationTypeList
+function Spell (name, detailText, school, level, isAttack, savingThrow, castingTime, hasRitual, castingType, range, rangeType, duration, durationType) {
+    this.spellName = "";
+    this.detailText = "";
+    this.school = 0; //corresponds to position on schoolList
+    this.level = 0;
+    this.isAttack = false;
+    this.savingThrow = -1; //corresponds to position on savingThrowList
+    this.castingTime = -1;
+    this.hasRitual = false;
+    this.castingType = -1; //corresponds to position on castingTypeList
+    this.range = -1;
+    this.rangeType = -1; //corresponds to position on rangeTypeList
+    this.duration = -1;
+    this.durationType = -1; //corresponds to position on durationTypeList
                    // if not instantaneous, a spell is concentration
-verbalComponent : false,
-somaticComponent : false,
-materialComponent :[],
+    this.verbalComponent = false;
+    this.somaticComponent = false;
+    this.materialComponent =[];
+
+}
 
 
+//write spell as a class, see zbooks ch 8
 
 
+//method to grab values from character class and calculate damage with known damage at slot
 
-returnName (){return spellName;},
 
-returnDetailText(){return detailText;},
+Spell.prototype.returnName = function(){return spellName;}
+Spell.prototype.setName = function(name) {spellName=name}
 
-returnSchool(){return schoolList[school];},
+Spell.prototype.returnDetailText = function(){return detailText;}
+Spell.prototype.setDetailText = function(text){detailText = text}
 
-returnLevel(){if (level = 0){return "cantrip"} return level;},
+Spell.prototype.returnSchool = function(){return schoolList[school];}
+Spell.prototype.setSchool = function(name){
+    if (name!=null){
+        name.toLowerCase();
+        name.trim();
+        first = name.charAt(0);
+        first.toUpperCase();
+        name = first + name.substr(1);
+        if (schoolList.indexOf(name)!=-1){
+            school = schoolList.indexOf(name);
+        }
+    }
+}
 
-returnIfAttack(){return isAttack},
+Spell.prototype.returnLevel = function(){if (level = 0){return "cantrip"} return level;},
 
-returnSavingThrow(){if (savingThrow < 0) {return "none"}; return savingThrowList[savingThrow];},
+Spell.prototype.returnIfAttack = function(){return isAttack},
 
-returnCastingTime (){
+Spell.prototype.returnSavingThrow = function(){if (savingThrow < 0) {return "none"}; return savingThrowList[savingThrow];},
+
+Spell.prototype.returnCastingTime = function (){
     if (castingType > 2) 
     {return castingTime + castingTypeList[castingType]} 
     return castingTypeList[castingType];
-},
+}
 
-returnCastingTimeRitual (){
+Spell.prototype.returnCastingTimeRitual = function (){
     if (!this.returnRitual)this.returnCastingTime;
     if (castingType = 3 ) 
     {   castingTime += 10;
         return castingTime + castingTypeList[castingType];} 
         return castingTime + castingTypeList[castingType] + "10 minutes";
     
-},
-
-returnRitual(){return hasRitual;},
-
-returnRange(){
-    if (rangeType<2) return rangeTypeList[rangeType];
-    return range + " foot " + rangeTypeList[rangeType];
-},
-
-returnDuration(){
-    if (durationType = 0) return durationTypeList[durationType];
-    return duration + durationTypeList[durationType];
-},
-
-returnHasVerbalComponent (){return verbalComponent},
-
-reuturnHasSomaticComponent (){return somaticComponent},
-
-returnHasMaterialComponent (){if (materialComponent.length>0) {return true;}
-return false;},
-
-returnMaterialComponent (){
-    let str = "";
-    for (component of materialComponent)
-    {
-        str += component;
-    }
-    return str;
 }
 
-};
+Spell.prototype.returnIfRitual = function(){return hasRitual;},
 
-
-
-// basic return functions, primarily return strings or in some cases nums. 
-
-function returnName (){return spellName;}
-
-function returnDetailText(){return detailText;}
-
-function returnSchool(){return schoolList[school];}
-
-function returnLevel(){if (level = 0){return "cantrip"} return level;}
-
-function returnIfAttack(){return isAttack}
-
-function returnSavingThrow(){if (savingThrow < 0) {return "none"}; return savingThrowList[savingThrow];}
-
-function returnCastingTime (){
-    if (castingType > 2) 
-    {return castingTime + castingTypeList[castingType]} 
-    return castingTypeList[castingType];
-}
-
-function returnCastingTimeRitual (){
-    if (castingType = 3 ) 
-    {   castingTime += 10;
-        return castingTime + castingTypeList[castingType];} 
-        return castingTime + castingTypeList[castingType] + "10 minutes";
-    
-}
-
-function returnRitual(){return hasRitual;}
-
-function returnRange(){
+Spell.prototype.returnRange = function(){
     if (rangeType<2) return rangeTypeList[rangeType];
     return range + " foot " + rangeTypeList[rangeType];
 }
 
-function returnDuration(){
+Spell.prototype.returnDuration = function(){
     if (durationType = 0) return durationTypeList[durationType];
     return duration + durationTypeList[durationType];
 }
 
-function returnHasVerbalComponent (){return verbalComponent}
+Spell.prototype.returnHasVerbalComponent = function (){return verbalComponent}
 
-function reuturnHasSomaticComponent (){return somaticComponent}
+Spell.prototype.returnHasSomaticComponent = function (){return somaticComponent}
 
-function returnHasMaterialComponent (){if (materialComponent.length>0) {return true;}
+Spell.prototype.returnHasMaterialComponent = function (){if (materialComponent.length>0) {return true;}
 return false;}
 
-function returnMaterialComponent (){
+Spell.prototype.returnMaterialComponent = function (){
     let str = "";
     for (component of materialComponent)
     {
@@ -145,8 +103,3 @@ function returnMaterialComponent (){
     }
     return str;
 }
-
-
-
-//TODO figure out system to populate a directory of spell Objects
-
