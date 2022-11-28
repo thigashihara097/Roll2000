@@ -6,6 +6,10 @@ function main() {
 
     // Create a new board
     function createBoard() {
+        if(document.querySelector("table") != null) {
+            let t = document.querySelector("table");
+            t.parentNode.removeChild(t);
+        }
         let w = document.querySelector("#width").value;
         let h = document.querySelector("#height").value;
         let b = new Board(w, h);
