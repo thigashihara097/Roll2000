@@ -6,6 +6,13 @@ let submit= document.querySelector('button');
 submit.addEventListener("click", characterInfo);
 }
 
+class character{
+constructor(name, Class, level, dmname, race, alignment, experince, stats){
+this.name=name;
+this.Class=Class;
+}
+}
+
 function returnCInfo(){
     return character;
 }
@@ -21,10 +28,7 @@ function storeSpells(){
 
 }
 
-function portInfo(){
-/* This function is for porting info so we don't have to create it. 
-*/
-}
+
 
 function calcMods(){
 /* This function is for calculating stat modifiers, saving throws and skills. 
@@ -164,7 +168,7 @@ function characterInfo(){
     character.experience=g.value;
     character.profLang.push("Common");
     character.stats.push(str.value, dex.value, con.value, int.value, wis.value, cha.value);
-    let sMod=(str.value-10)/2;
+        let sMod=(str.value-10)/2;
         let dMod=(dex.value-10)/2;
         let cMod=(con.value-10)/2;
         let iMod=(int.value-10)/2;
