@@ -31,11 +31,10 @@ function main() {
             this.tiles[i] = [];
             addRow();
             for(let j = 0; j < h; j++) {
-                this.tiles[i][j] = new Tile("(" + i + ", " + j + ")");
-                addCell(i);
+                this.tiles[i][j] = new Tile(null, i, j);
+                addCell(i, "(" + i + ", " + j + ")");
             }
         }
-        console.log(this.tiles)
     }
 
     // DOM manipulation function - Add a table to the page
@@ -52,17 +51,22 @@ function main() {
     } 
 
     // DOM manipulation function - Add cells to the table
-    function addCell(row) {
+    function addCell(row, content) {
         let t = document.querySelectorAll("tr")[row];
         let c = document.createElement("td");
         t.appendChild(c);
+        let p = document.createElement("p");
+        c.appendChild(p);
+        p.textContent = content;
     }
 
     // Tile object
-    function Tile(contents) {
+    function Tile(contents, row, col) {
         // Variables
         this.wall = false;
         this.contents = contents;
+        this.row = row;
+        this.col = col;
     }
 
     // Make wall Tile method
@@ -71,8 +75,8 @@ function main() {
     }
 
     // Change tile contents Tile method
-    Tile.prototype.changeContents = function() {
-        this.contents = "a friend";
+    Tile.prototype.changeContents = function(content) {
+        this.contents = content;
     }
 
     // toString Tile method
