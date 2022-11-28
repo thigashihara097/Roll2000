@@ -31,7 +31,7 @@ function main() {
             this.tiles[i] = [];
             addRow();
             for(let j = 0; j < h; j++) {
-                this.tiles[i][j] = Tile("(" + i + ", " + j + ")");
+                this.tiles[i][j] = new Tile("(" + i + ", " + j + ")");
                 addCell(i);
             }
         }
@@ -77,7 +77,6 @@ function main() {
 
     // toString Tile method
     Tile.prototype.toString = function() {
-        console.log(this.contents);
         return this.contents;
     }
 }
