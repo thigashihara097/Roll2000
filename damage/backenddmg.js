@@ -21,9 +21,12 @@ function rolld6(){
 function rolld4(){
     return rolldNum(4);
 }
+function roll5(){
+    return 5;
+}
 
 /*attack function
-takes a weapon, and a target to attack, returns damage,
+takes a attacking object, and a target to attack, returns damage,
 */
 function Attack(weapon, attackee){
    if(hitCheck(weapon, attackee)){
@@ -32,7 +35,7 @@ function Attack(weapon, attackee){
 }
 
 function damage(source, damagee){
-    d=source.dealDamage();
+    let d=source.dealDamage();
     damagee.hp=damagee.hp-d;
     return d;
 }
@@ -43,9 +46,12 @@ and checks if an attack hits, returns true if the attack hit
 and false if the attack misses. 
 */
 function hitCheck(attacker, attackee){
-    let r= rolld20();
+    hitCheckt(attacker, attackee, rolld20)
+}
+function hitCheckt(attacker, attackee, roller){
+    let r= roller();
     r+=attacker.hitmod();
-    if(r-1>attackee.ac){
+    if(r>=attackee.ac){
         return true;
     }
     return false
@@ -57,7 +63,7 @@ it effects all targets
 */
 function cast(spell, targets){
     console.log(spell.description);
-    if(spell.isAttack){
+    if(spell.retrunIfAttack){
     Attack(spell,targets);
     }
     else{
@@ -92,3 +98,6 @@ depending on which it is.
         }
     }
 }*/
+module.exports.roll5=roll5;
+module.exports.hitCheckt=hitCheckt;
+module.exports.hitCheck=hitCheck;
