@@ -2,7 +2,8 @@ addEventListener("DOMContentLoaded", main);
 
 function main() {
     // Submit button listener
-    document.querySelector("button").addEventListener("click", createBoard);
+    document.querySelector("#create").addEventListener("click", createBoard);
+
 
     // Create a new board
     function createBoard() {
@@ -13,8 +14,8 @@ function main() {
         let w = document.querySelector("#width").value;
         let h = document.querySelector("#height").value;
         let b = new Board(w, h);
-        console.log(b);
     }
+
 
     // Board object
     function Board(w, h) {
@@ -36,7 +37,6 @@ function main() {
             addRow();
             for(let j = 0; j < h; j++) {
                 this.tiles[i][j] = new Tile(null, i, j);
-                addCell(i, "(" + i + ", " + j + ")");
             }
         }
     }
@@ -64,6 +64,7 @@ function main() {
         p.textContent = content;
     }
 
+
     // Tile object
     function Tile(contents, row, col) {
         // Variables
@@ -71,6 +72,9 @@ function main() {
         this.contents = contents;
         this.row = row;
         this.col = col;
+
+        // Add a corresponding cell to the table
+        addCell(row, "(" + row + ", " + col + ")");
     }
 
     // Make wall Tile method
