@@ -25,14 +25,14 @@ body {
     color: black;
 }
   
-.nav a.active {
-    background-color: purple;
-    color: white;
+.nav a.home {
+    background-color: orange;
+    color: black;
 }
 
-.nav a.active:hover {
-    background-color: blue;
-    color: white;
+.nav a.home:hover {
+    background-color: rgb(255, 200, 0);
+    color: black;
 }
 
 .nav a.inLog {
@@ -42,8 +42,20 @@ body {
 }
 
 .nav a.inLog:hover {
-    background-color: rgb(179, 0, 255);
+    background-color: rgb(31, 83, 255);
     color: white;
+}
+
+.nav a.account {
+    float: right;
+    color: white;
+    text-decoration: none;
+    background-color: purple;
+    text-align: center;
+}
+
+.nav a.account:hover {
+    background-color: rgb(165, 0, 165);
 }
 
 .info-wrapper {
@@ -53,17 +65,19 @@ body {
 
 .home-inputs {
     display: flex;
-    flex-direction: column;
-    background-color: lightgoldenrodyellow;
-    border: 1px black solid;
     padding: 5px;
-
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
 .home-inputs a {
     padding: 10px;
     color: black;
     text-decoration: none;
-    border: 1px;
-    flex-shrink: 0;
+    border: 1px black solid;
+    background-color: lightgoldenrodyellow;
+    text-align: center;
+    flex: 0 1 30%;
 }
+
