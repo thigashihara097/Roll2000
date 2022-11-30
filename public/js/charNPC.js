@@ -10,6 +10,12 @@ class character{
 constructor(name, Class, level, dmname, race, alignment, experince, stats){
 this.name=name;
 this.Class=Class;
+this.level=level;
+this.dmname=dmname; 
+this.race=race; 
+this.alignment=alignment;
+this.experience=experince;
+this.stats=stats;
 }
 }
 
