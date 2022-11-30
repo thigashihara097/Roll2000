@@ -2,7 +2,7 @@
 // constants in use in spell
 const schoolList =["Classless", "Abjuration", "Conjuration", "Divination", "Enchantment", "Evocation", "Illusion", "Necromancy", "Transmutation"];
 const savingThrowList = ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"];
-const castingCostList = ["single action", "bonus action", "duration of concentration"];
+const actionCostList = ["single action", "bonus action", "duration of concentration"];
 const rangeTypeList = ["touch", "self", "ranged", "area of effect", "cone of effect", "cube of effect", "cylinder of effect", "line of effect", "sphere of effect"];
 const timeTypeList = ["instantaneous", "rounds", "minutes", "hours", "days", "months", "years"];
 
@@ -24,8 +24,8 @@ function Spell (name, detailText, school, level, isAttack, attackDieFaces, attac
     this.castingTimeType = 0; // corresponds to a position on timeTypeList
     this.setCastingTimeType (castingTimeType); // accepts a value from timeTypeList, not case sensitive
     this.hasRitual = hasRitual;
-    this.castingCost = 0; //corresponds to position on castingCostList
-    this.setCastingCost(castingCost); //accepts a value from castingCostList, not case sensitive; duration of concentration indicates castingTime will be used
+    this.castingCost = 0; //corresponds to position on actionCostList
+    this.setCastingCost(castingCost); //accepts a value from actionCostList, not case sensitive; duration of concentration indicates castingTime will be used
     this.range = range;
     this.rangeType = 0; //corresponds to position on rangeTypeList
     this.setRangeType (rangeType); //accepts a value on rangeTypeList, not case sensitive
@@ -120,15 +120,15 @@ Spell.prototype.returnCastingTime = function (){
         return this.castingTime + " "
     }
     else {
-        return castingCostList[castingCost];
+        return actionCostList[castingCost];
     }
 }
 Spell.prototype.setCastingTimeType = function (castingTimeType){
     if (castingTimeType!= null){
         castingTimeType.toLowerCase();
         castingTimeType.trim();
-        if (castingCostList.indexOf(castingTimeType) != -1){
-            this.castingTimeType = castingCostList.indexOf(castingTimeType);
+        if (actionCostList.indexOf(castingTimeType) != -1){
+            this.castingTimeType = actionCostList.indexOf(castingTimeType);
         }
     }
 }
