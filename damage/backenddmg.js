@@ -21,7 +21,7 @@ function rolld6(){
 function rolld4(){
     return rolldNum(4);
 }
-function roll5(){
+function rolld5(){
     return 5;
 }
 
@@ -63,7 +63,7 @@ it effects all targets
 */
 function cast(spell, targets){
     console.log(spell.description);
-    if(spell.retrunIfAttack){
+    if(spell.returnIfAttack()){
     Attack(spell,targets);
     }
     else{

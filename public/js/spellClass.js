@@ -7,14 +7,16 @@ const rangeTypeList = ["touch", "self", "ranged", "area of effect", "cone of eff
 const timeTypeList = ["instantaneous", "rounds", "minutes", "hours", "days", "months", "years"];
 
 
-function Spell (name, detailText, school, level, isAttack, attackDieFaces, levelDieAdditions, savingThrow, castingTime, castingTimeType, hasRitual, castingCost, range, rangeType, duration, durationType, verbalComponent, somaticComponent, materialComponentList, subClasses) {
+function Spell (name, detailText, school, level, isAttack, attackDieFaces, attackDieBase, levelDieAdditions, savingThrow, castingTime, castingTimeType, hasRitual, castingCost, range, rangeType, duration, durationType, verbalComponent, somaticComponent, materialComponentList, subClasses) {
     this.spellName = name;
     this.detailText = detailText;
     this.school = 0; //corresponds to position on schoolList
     this.setSchool(school); //accepts a value on schoolList, not case sensitive
     this.level = level;
     this.isAttack = isAttack;
+    this.spellSlot = 0; // needs to be intitialized when a spell is added to a slot within a character
     this.attackDieFaces = attackDieFaces; //corresponds to the faces of the die used to calculate damage
+    this.attackDieBase = attackDieBase; //corresponds with the number of die used at this spell's base level slot
     this.levelDieAdditions = levelDieAdditions; //corresponds with how many die are added to a roll for each level slot above the base level
     this.savingThrow = 0;
     this.setSavingThrow(savingThrow); //corresponds to position on savingThrowList
@@ -41,10 +43,17 @@ function Spell (name, detailText, school, level, isAttack, attackDieFaces, level
 }
 
 
-Spell.prototype.calculateDamage = function () {
-
+Spell.prototype.dealDamage = function () {
+    let numDie = this.spellSlot - this.level;
+    numDie *= this.levelDieAdditions;
+    numDie += this.attackDieBase;
+    let damage = 0;
+    while (numDie > 0){
+        damage += rolldNum (this.attackDieFaces);
+        numDie--;
+    }
+    return damage;
 }
-
 
 
 
@@ -73,6 +82,8 @@ Spell.prototype.setLevel = function(levelNum){this.level = levelNum}
 
 Spell.prototype.returnIfAttack = function(){return this.isAttack}
 Spell.prototype.setIfAttack = function(attack){this.isAttack = attack}
+
+Spell.prototype.setSpellSlot = function (level) {spellSlot = level}
 
 Spell.prototype.returnAttackDieFaces = function() {return this.attackDieFaces}
 Spell.prototype.setAttackDieFaces = function(faces) {this.attackDieFaces = faces}
