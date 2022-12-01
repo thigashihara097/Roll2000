@@ -103,8 +103,8 @@ spellCastingClass:"",
 spellCastingAbility:1,
 spellDC:1, 
 spellAttackBonus:1, 
-spells:[lvl][spells], 
-money:[type][amt], 
+//spells:[lvl][spells], 
+//money:[type][amt], 
 equiptment:[]
 };
 
@@ -145,8 +145,8 @@ spellCastingClass:"",
 spellCastingAbility:1,
 spellDC:1, 
 spellAttackBonus:1, 
-spells:[lvl][spells], 
-money:[type][amt], 
+//spells:[lvl][spells], 
+//money:[type][amt], 
 equiptment:[]
 };
 
