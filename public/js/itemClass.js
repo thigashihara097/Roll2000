@@ -1,9 +1,9 @@
 const actionCostList = ["single action", "bonus action", "duration of concentration"];
 const timeTypeList = ["instantaneous", "rounds", "minutes", "hours", "days", "months", "years"];
 //above are redundant in aggregate js file
-const armorTypeList = [padded, leather, studdedLeather, Hide, chainShirt, scaleMail, breastPlate, halfPlate, ringMail, chainMail, splint, plate, shield];
-const weaponPropertylist =[ammunition, finesse, heavy, light, loading, range, reach, special, thrown, twohanded, versatile];
-const attackTypeList = [bludgeoning, slashing, piercing];
+const armorTypeList = ["padded", "leather", "studdedLeather", "hide", "chainShirt", "scaleMail", "breastPlate", "halfPlate", "ringMail", "chainMail", "splint", "plate", "shield"];
+const weaponPropertylist =["ammunition", "finesse", "heavy", "light", "loading", "range", "reach", "special", "thrown", "twohanded", "versatile"];
+const attackTypeList = ["bludgeoning", "slashing", "piercing"];
 
 
 function Item (name, detailText, isWeapon, isMelee, isMartial, rangeMax, weaponProperties, attackType, rangeMin, attackDieFaces, attackDieNumber, cpValue, isArmor, armorType, isShield) {
