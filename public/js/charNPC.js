@@ -133,7 +133,6 @@ saveThrows[4] is wisdom saving throw and saveThrows[5] is charisma saving throw.
 
 Skills:[],
 profLang:[], 
-//profLang is all the other proficiencies and languages
 movSpeed:30,
 aC:23,
 initiative:1,
