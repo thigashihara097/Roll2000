@@ -6,6 +6,18 @@ let submit= document.querySelector('button');
 submit.addEventListener("click", characterInfo);
 }
 
+const stats=[];
+const statMods=[];
+const saveThrows=[];
+const spellCastingClass="Paladin";
+const profLang=["Common"];
+
+
+
+
+
+
+
 class character{
 constructor(name, Class, level, dmname, race, alignment, experince, stats){
 this.name=name;
@@ -16,8 +28,7 @@ this.race=race;
 this.alignment=alignment;
 this.experience=experince;
 this.stats=stats;
-}
-}
+}}
 
 function returnCInfo(){
     return character;
@@ -41,6 +52,7 @@ function calcMods(){
 We need these when rolling specific things, such as initiative.  
 */
 
+
 }
 
 
@@ -57,15 +69,13 @@ let npc={
       constitution modifier is statmods[2], intelligence modifier is statmods[3], 
       wisdom modifier is statmods[4], charisma is statmods[5].
 */
-    moreStats:[0, 0, 2],
-    /* moreStats[0] is perception, moreStats[1] is inspiration and moreStats[2] is 
-    proficiency bonus. 
-    */
+perception:0, inspiration:0, proficiency:0,
     saveThrows:[0, 0, 0, 0, 0, 0],
 /* saveThrows[0] is strength saving throw, saveThrows[1] is dexterity saving throw, 
 saveThrows[2] is constitution saving throw, saveThrows[3] is intelligence saving throw, 
 saveThrows[4] is wisdom saving throw and saveThrows[5] is charisma saving throw.
 */
+
     profLang:[], 
 /* profLang is all the other proficiencies and languages
 */
@@ -73,16 +83,9 @@ movSpeed:20,
 aC:10,
 initiative:1,
 hP:20, 
-tempHp:5,
-/*hitDice: roll 1d10
-*/ 
+//hitDice: roll 1d10
 deathSavesSuccesses:0,
 deathSavesFails:0,
-personalityTraits:[], 
-ideals:[], 
-bonds:[], 
-flaws:[], 
-featuresTraits:[],
 spellCastingClass:"",
 spellCastingAbility:1,
 spellDC:1, 
@@ -106,15 +109,14 @@ let character={
       constitution modifier is statmods[2], intelligence modifier is statmods[3], 
       wisdom modifier is statmods[4], charisma is statmods[5].
 */
+perception:0, inspiration:0, proficiency:0,
 moreStats:[0, 0, 2],
-/* moreStats[0] is perception, moreStats[1] is inspiration and moreStats[2] is 
-proficiency bonus. 
-*/
 saveThrows:[0, 0, 0, 0, 0, 0],
 /* saveThrows[0] is strength saving throw, saveThrows[1] is dexterity saving throw, 
 saveThrows[2] is constitution saving throw, saveThrows[3] is intelligence saving throw, 
 saveThrows[4] is wisdom saving throw and saveThrows[5] is charisma saving throw.
 */
+
 
 profLang:[], 
 /* profLang is all the other proficiencies and languages
@@ -123,22 +125,13 @@ movSpeed:30,
 aC:23,
 initiative:1,
 hP:30, 
-tempHp:10,
-/*hitDice: roll 1d10
-*/ 
+//hitDice: roll 1d10
 deathSavesSuccesses:0,
 deathSavesFails:0,
-personalityTraits:[], 
-ideals:[], 
-bonds:[], 
-flaws:[], 
-featuresTraits:[],
 spellCastingClass:"",
 spellCastingAbility:1,
 spellDC:1, 
 spellAttackBonus:1, 
-
-
 };
 
 
@@ -163,7 +156,6 @@ function characterInfo(){
      let arc=document.getElementById("armor");
      let speed=document.getElementById("speed");
     let hitPoints=document.getElementById("hp");
-    let tempHitPoints=document.getElementById("thp");
     if(h.value=="Character"){
     character.name=a.value;
     character.class=b.value;
@@ -189,7 +181,6 @@ function characterInfo(){
         character.initiative=Math.round(dMod);
         character.movSpeed=speed.value;
         character.hP=hitPoints.value;
-        character.tempHp=tempHitPoints.value;
     }else if(h.value=="NPC"){
         npc.name=a.value;
         npc.class=b.value;
@@ -215,7 +206,6 @@ function characterInfo(){
         npc.initiative=Math.round(dMod);
         npc.movSpeed=speed.value;
         npc.hP=hitPoints.value;
-        npc.tempHp=tempHitPoints.value;
     }
 }
 
