@@ -45,6 +45,14 @@ function returnNInfo(){
     return npc;  
 }
 
+function returnprof(){
+return this.proficiency;
+}
+
+
+
+
+
 function storeSpells(){
 //I need help with the storing? 
 //Guys help me out on this    
