@@ -31,7 +31,7 @@ proficiency=6;
 }
 }
 
-class Npc extends character(){
+class Npc extends Character(){
 constructor(name, Class, level, dmname, race, alignment, experince){
 super(name, Class, level, dmname, race, alignment, experince); 
 }
