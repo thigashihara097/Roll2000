@@ -7,7 +7,7 @@ submit.addEventListener("click", characterInfo);
 }
 
 
-class character{
+class Character{
 constructor(name, Class, level, dmname, race, alignment, experince){
 let proficiency=0;
 this.name=name;
@@ -28,9 +28,10 @@ proficiency=5;
 }else if(this.level>=17){
 proficiency=6;    
 }
-}}
+}
+}
 
-class npc extends character(){
+class Npc extends character(){
 constructor(name, Class, level, dmname, race, alignment, experince){
 super(name, Class, level, dmname, race, alignment, experince); 
 }
