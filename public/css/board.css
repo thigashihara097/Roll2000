@@ -11,3 +11,7 @@ td {
     padding: 5px;
     margin: 5px;
 }
+
+.wall {
+    background-color: grey;
+}

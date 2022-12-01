@@ -14,6 +14,7 @@ function main() {
         let w = document.querySelector("#width").value;
         let h = document.querySelector("#height").value;
         let b = new Board(w, h);
+        console.log(b);
     }
 
 
@@ -45,6 +46,9 @@ function main() {
     function addTable() {
         let t = document.createElement("table");
         document.body.appendChild(t);
+
+        // Add an event listener for changing cells to walls
+        t.addEventListener("click", wallVisual);
     }
 
     // DOM manipulation function - Add rows to the table
@@ -64,6 +68,16 @@ function main() {
         p.textContent = content;
     }
 
+    // DOM manipulation function - Changes the visual appearance of wall tiles
+    function wallVisual(event) {
+        let c = event.target;
+        if(!c.classList.contains("wall")) {
+            c.classList.add("wall");
+        } else {
+            c.classList.remove("wall");
+        }
+    }
+
 
     // Tile object
     function Tile(contents, row, col) {
@@ -78,8 +92,14 @@ function main() {
     }
 
     // Make wall Tile method
-    Tile.prototype.setWall = function() {
-        this.wall = true;
+    Tile.prototype.setWall = function(cell) {
+        console.log("clicked")
+        if(this.wall == true) {
+            this.wall == false;
+        } else {
+            this.wall = true;
+        }
+        wallVisual(cell, this.wall);
     }
 
     // Change tile contents Tile method
