@@ -7,14 +7,10 @@ submit.addEventListener("click", getInfo);
 }
 
 class Character{
-constructor(name, Class, level, dmname, race, alignment, experince, proficiency,stats, modArray){
-this.name=name;
-this.Class=Class;
-this.level=level;
-this.dmname=dmname; 
-this.race=race; 
-this.alignment=alignment;
-this.experience=experince;
+constructor(name, Class, level, dmname, race, alignment, experince, proficiency,stats, modArray, perception, 
+inspiration){
+this.name=name; this.Class=Class; this.level=level; this.dmname=dmname; 
+this.race=race; this.alignment=alignment; this.experience=experince;
 this.proficiency=proficiency;
 if(this.level>=1 && this.level<5){
 this.proficiency=2;
@@ -29,35 +25,30 @@ this.proficiency=6;
 }
 this.stats=stats;
 this.modArray=modArray;
+this.perception=perception;
+this.inspiration=inspiration;
 }
 }
 
 class Npc extends Character{
-constructor(name, Class, level, dmname, race, alignment, experince, proficiency, stats, modArray){
-super(name, Class, level, dmname, race, alignment, experince, proficiency, stats, modArray); 
+constructor(name, Class, level, dmname, race, alignment, experince, proficiency, stats, modArray, perception, 
+inspiration){
+super(name, Class, level, dmname, race, alignment, experince, proficiency, stats, modArray, perception, 
+inspiration); 
 }
-}
-
-function returnprof(){
-return this.proficiency;
 }
 
 function storeSpells(){
 //I need help with the storing? 
 //Guys help me out on this    
-
-
-
 }
 
 function storeMoney(){
 //I need help with the storing? 
 //Guys help me out on this    
-
 }
 
 let npc={
-perception:0, inspiration:0, 
     saveThrows:[0, 0, 0, 0, 0, 0],
 /* saveThrows[0] is strength saving throw, saveThrows[1] is dexterity saving throw, 
 saveThrows[2] is constitution saving throw, saveThrows[3] is intelligence saving throw, 
@@ -65,7 +56,6 @@ saveThrows[4] is wisdom saving throw and saveThrows[5] is charisma saving throw.
 */
 Skills:[],
 profLang:[], 
-//profLang is all the other proficiencies and languages
 movSpeed:20,
 aC:10,
 initiative:1,
@@ -86,13 +76,11 @@ equiptment:[]
 
 //Create object for storing character sheet info
 let character={ 
-perception:0, inspiration:0, 
 saveThrows:[0, 0, 0, 0, 0, 0],
 /* saveThrows[0] is strength saving throw, saveThrows[1] is dexterity saving throw, 
 saveThrows[2] is constitution saving throw, saveThrows[3] is intelligence saving throw, 
 saveThrows[4] is wisdom saving throw and saveThrows[5] is charisma saving throw.
 */
-
 Skills:[],
 profLang:[], 
 movSpeed:30,
@@ -126,7 +114,7 @@ function getInfo(){
      let int=document.getElementById("int");
      let wis=document.getElementById("wis");
      let cha=document.getElementById("cha");
-    // let ins=document.getElementById("ins");
+     let ins=document.getElementById("ins");
    // let arc=document.getElementById("armor");
    // let speed=document.getElementById("speed");
   // let hitPoints=document.getElementById("hp");
@@ -140,6 +128,7 @@ function getInfo(){
         calc=(num-10)/2;
          mods.push(Math.round(calc));
     }
+    const perception=10+mods[4];
     if (h.value=="Character"){
     const name=a.value;
     const Class=b.value;
@@ -148,8 +137,10 @@ function getInfo(){
     const race=e.value;
     const alignment=f.value;
     const experience=g.value;
+    const inspiration=ins.value;
     let proficiency=0;
-    const char=new Character(name, Class, level, playername, race, alignment, experience, proficiency, stats, mods); 
+    const char=new Character(name, Class, level, playername, race, alignment, experience, proficiency, stats, mods, perception, 
+    inspiration); 
     return char; 
     }else if (h.value=="NPC"){
     const name=a.value;
@@ -160,7 +151,8 @@ function getInfo(){
     const alignment=f.value;
     const experience=g.value;
     let proficiency=0;
-    const npc=new Npc(name, Class, level, playername, race, alignment, experience, proficiency, stats, mods); 
+    const npc=new Npc(name, Class, level, playername, race, alignment, experience, proficiency, stats, mods, perception, 
+    inspiration); 
     return npc;    
     }
 }
@@ -170,14 +162,7 @@ function characterInfo(){
     if(h.value=="Character"){
          
     character.profLang.push("Common");
-        let sMod=(str.value-10)/2;
-        let dMod=(dex.value-10)/2;
-        let cMod=(con.value-10)/2;
-        let iMod=(int.value-10)/2;
-        let wMod=(wis.value-10)/2;
-        let chMod=(cha.value-10)/2;
-        character.statMods.push(Math.round(sMod), Math.round(dMod), Math.round(cMod), Math.round(iMod),
-        Math.round(wMod), Math.round(chMod));
+       
         character.aC=arc.value;
         character.initiative=Math.round(dMod);
         character.movSpeed=speed.value;
@@ -185,15 +170,7 @@ function characterInfo(){
     }else if(h.value=="NPC"){
        
         npc.profLang.push("Common");
-        npc.stats.push(str.value, dex.value, con.value, int.value, wis.value, cha.value);
-        let sMod=(str.value-10)/2;
-        let dMod=(dex.value-10)/2;
-        let cMod=(con.value-10)/2;
-        let iMod=(int.value-10)/2;
-        let wMod=(wis.value-10)/2;
-        let chMod=(cha.value-10)/2;
-        npc.statMods.push(Math.round(sMod), Math.round(dMod), Math.round(cMod), Math.round(iMod),
-        Math.round(wMod), Math.round(chMod));
+        
         npc.aC=arc.value;
         npc.initiative=Math.round(dMod);
         npc.movSpeed=speed.value;
