@@ -135,7 +135,7 @@ function getInfo(){
     const mods=[]; 
     stats.forEach(myfunction); 
     function myfunction(){
-    let mod=(stats.values-10)/2; 
+    let mod=(stats.value-10)/2; 
     mods.push(Math.round(mod));
 }
     if (h.value=="Character"){
