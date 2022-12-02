@@ -26,12 +26,12 @@ body {
 }
   
 .nav a.home {
-    background-color: orange;
-    color: black;
+    background-color: black;
+    color: white;
 }
 
 .nav a.home:hover {
-    background-color: rgb(255, 200, 0);
+    background-color: lightgray;
     color: black;
 }
 
