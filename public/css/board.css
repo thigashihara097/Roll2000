@@ -15,3 +15,23 @@ td {
 .wall {
     background-color: grey;
 }
+
+main {
+    display: flex;
+}
+
+main > div {
+    margin: 5px;
+}
+
+#character {
+    flex: 0 1 20%;
+}
+
+#board {
+    flex: 0 1 80%;
+}
+
+div > p {
+    margin: 0px;
+}
