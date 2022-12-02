@@ -17,17 +17,18 @@ this.alignment=alignment;
 this.experience=experince;
 this.proficiency=proficiency;
 if(this.level>=1 && this.level<5){
-proficiency=2;
+this.proficiency=2;
 }else if (this.level>=5 && this.level<9){
-proficiency=3;     
+this.proficiency=3;     
 }else if (this.level>=9 && this.level<13){
-proficiency=4;
+this.proficiency=4;
 }else if(this.level>=13 && this.level<17){
-proficiency=5;    
+this.proficiency=5;    
 }else if(this.level>=17){
-proficiency=6;    
+this.proficiency=6;    
 }
 this.stats=stats;
+this.calcMods=calcMods; 
 }
 }
 
@@ -37,21 +38,9 @@ super(name, Class, level, dmname, race, alignment, experince, proficiency, stats
 }
 }
 
-function returnCInfo(){
-    return character;
-}
-
-function returnNInfo(){ 
-    return npc;  
-}
-
 function returnprof(){
 return this.proficiency;
 }
-
-
-
-
 
 function storeSpells(){
 //I need help with the storing? 
@@ -70,22 +59,17 @@ function storeMoney(){
 
 
 function calcMods(){
-/* This function is for calculating stat modifiers, saving throws and skills. 
-We need these when rolling specific things, such as initiative.  
-*/
-
-
+this.stats.forEach(myFunction); 
+function myFunction(){
+    let mods=(stats[i]-10)/2;
+    const modifier=[];
+    modifier.push(mods[i]); 
+    i++;
+}
+return modifier;
 }
 
-
-
 let npc={
-    
-    statMods:[], 
-      /*Strength modifier is statmods[0], dexterity modifier is statmods[1], 
-      constitution modifier is statmods[2], intelligence modifier is statmods[3], 
-      wisdom modifier is statmods[4], charisma is statmods[5].
-*/
 perception:0, inspiration:0, 
     saveThrows:[0, 0, 0, 0, 0, 0],
 /* saveThrows[0] is strength saving throw, saveThrows[1] is dexterity saving throw, 
@@ -114,14 +98,7 @@ equiptment:[]
 
 
 //Create object for storing character sheet info
-let character={
-    
-
-    statMods:[], 
-     /*Strength modifier is statmods[0], dexterity modifier is statmods[1], 
-      constitution modifier is statmods[2], intelligence modifier is statmods[3], 
-      wisdom modifier is statmods[4], charisma is statmods[5].
-*/
+let character={ 
 perception:0, inspiration:0, 
 saveThrows:[0, 0, 0, 0, 0, 0],
 /* saveThrows[0] is strength saving throw, saveThrows[1] is dexterity saving throw, 
@@ -162,6 +139,10 @@ function getInfo(){
      let int=document.getElementById("int");
      let wis=document.getElementById("wis");
      let cha=document.getElementById("cha");
+    // let ins=document.getElementById("ins");
+   // let arc=document.getElementById("armor");
+   // let speed=document.getElementById("speed");
+  // let hitPoints=document.getElementById("hp");
     const stats=[]; 
     stats.push(str.value, dex.value,con.value, int.value, wis.value, cha.value); 
     if (h.value=="Character"){
@@ -190,18 +171,10 @@ function getInfo(){
  
 }
 
-function getStats(){
-
-}
-
-
 //Actually stores the info
 function characterInfo(){
     if(h.value=="Character"){
-         let ins=document.getElementById("ins");
-         let arc=document.getElementById("armor");
-         let speed=document.getElementById("speed");
-        let hitPoints=document.getElementById("hp");
+         
     character.profLang.push("Common");
     character.stats.push(str.value, dex.value, con.value, int.value, wis.value, cha.value);
         let sMod=(str.value-10)/2;
