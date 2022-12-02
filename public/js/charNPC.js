@@ -148,7 +148,7 @@ function getInfo(){
     const alignment=f.value;
     const experience=g.value;
     let proficiency=0;
-    const char=new Character(name, Class, level, playername, race, alignment, experience, proficiency, stats, modArray); 
+    const char=new Character(name, Class, level, playername, race, alignment, experience, proficiency, stats, calcMods); 
     return char; 
     }else if (h.value=="NPC"){
     const name=a.value;
@@ -159,7 +159,7 @@ function getInfo(){
     const alignment=f.value;
     const experience=g.value;
     let proficiency=0;
-    const npc=new Npc(name, Class, level, playername, race, alignment, experience, proficiency, stats, modArray); 
+    const npc=new Npc(name, Class, level, playername, race, alignment, experience, proficiency, stats, calcMods); 
     return npc;    
     }
  
