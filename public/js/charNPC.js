@@ -133,9 +133,11 @@ function getInfo(){
     const stats=[]; 
     stats.push(str.value, dex.value,con.value, int.value, wis.value, cha.value); 
     const mods=[]; 
+    let num; 
+    let calc;
     for (let i=0; i<stats.length; i++)
-    let num=stats[i]; 
-    let calc=(num-10)/2;
+    num=stats[i];
+    calc=(num-10)/2;
      mods.push(Math.round(calc));
     }
     if (h.value=="Character"){
@@ -161,8 +163,6 @@ function getInfo(){
     const npc=new Npc(name, Class, level, playername, race, alignment, experience, proficiency, stats, mods); 
     return npc;    
     }
- 
-}
 
 //Actually stores the info
 function characterInfo(){
