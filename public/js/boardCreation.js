@@ -15,6 +15,23 @@ function main() {
         let h = document.querySelector("#height").value;
         let b = new Board(w, h);
         console.log(b);
+
+        // Add characters to sidebar
+        let a = ["a", "b", "c"]
+        displayCharacters(a);
+    }
+    
+    /*
+    *   DOM manipulation function - Display list of characters that can be placed on the board
+    *
+    *   @param array of character objects 
+    */
+    function displayCharacters(characters) {
+        for(let character of characters) {
+            let c = document.createElement("p");
+            document.querySelector("main").querySelectorAll("div")[1].appendChild(c);
+            c.textContent = character;
+        }
     }
 
 
@@ -112,8 +129,4 @@ function main() {
     Tile.prototype.toString = function() {
         return this.contents;
     }
-
-
-    // Display list of characters that can be placed on the board
-
 }

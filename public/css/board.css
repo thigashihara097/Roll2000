@@ -20,6 +20,10 @@ main {
     display: flex;
 }
 
+main > div {
+    margin: 5px;
+}
+
 #character {
     flex: 0 1 20%;
 }
