@@ -37,13 +37,13 @@ body {
 
 .nav a.inLog {
     float: right;
-    background-color: rgb(0, 0, 255);
+    background-color: black;
     color: white;
 }
 
 .nav a.inLog:hover {
-    background-color: rgb(31, 83, 255);
-    color: white;
+    background-color: lightgray;
+    color: black;
 }
 
 .nav a.account {
