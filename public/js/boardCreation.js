@@ -42,10 +42,11 @@ function main() {
         }
     }
 
+
     // DOM manipulation function - Add a table to the page
     function addTable() {
         let t = document.createElement("table");
-        document.body.appendChild(t);
+        document.body.querySelector("main").querySelector("div").appendChild(t);
 
         // Add an event listener for changing cells to walls
         t.addEventListener("click", wallVisual);
@@ -111,4 +112,8 @@ function main() {
     Tile.prototype.toString = function() {
         return this.contents;
     }
+
+
+    // Display list of characters that can be placed on the board
+
 }

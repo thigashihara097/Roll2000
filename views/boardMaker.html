@@ -24,19 +24,26 @@
             <a class="inLog" href="#logIn">Log In</a>
         </div>
         <br>
+        
+        <main>
+            <div id="board">
+                <!--Width input-->
+                <label for="width">Width:</label>
+                <input type="text" id="width">
 
-        <!--Width input-->
-        <label for="width">Width:</label>
-        <input type="text" id="width">
+                <!--Height input-->
+                <label for="height">Height:</label>
+                <input type="text" id="height">
 
-        <!--Height input-->
-        <label for="height">Height:</label>
-        <input type="text" id="height">
+                <!--Board creation button-->
+                <button id="create">Create Board</button>
 
-        <!--Board creation button-->
-        <button id="create">Create Board</button>
+                <!--Instructions-->
+                <p>Put in the width and height of the board, then click on cells to make them walls</p>
+            </div>
 
-        <!--Instructions-->
-        <p>Put in the width and height of the board, then click on cells to make them walls</p>
+            <!--List of characters for board-->
+            <div id="character">Characters:</div>
+        </main>
     </body>
 </html>
