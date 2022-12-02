@@ -33,6 +33,7 @@ function main() {
             c.textContent = character;
             c.setAttribute("draggable", "true");
             c.addEventListener("dragstart", dragStart);
+            c.addEventListener("dragend", dragEnd);
         }
     }
 
@@ -87,7 +88,6 @@ function main() {
 
         c.addEventListener("dragover", dragOver);
         c.addEventListener("drop", drop);
-        c.addEventListener("dragend", dragEnd);
     }
 
     // DOM manipulation function - Changes the visual appearance of wall tiles
@@ -123,7 +123,6 @@ function main() {
 
     // After a drop is complete
     function dragEnd(event) {
-        console.log(event.target)
         if(event.dataTransfer.dropEffect !== "none") {
             event.target.remove();
         }
