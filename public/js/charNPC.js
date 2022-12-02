@@ -7,7 +7,7 @@ submit.addEventListener("click", getInfo);
 }
 
 class Character{
-constructor(name, Class, level, dmname, race, alignment, experince, proficiency,stats){
+constructor(name, Class, level, dmname, race, alignment, experince, proficiency,stats, modArray){
 this.name=name;
 this.Class=Class;
 this.level=level;
@@ -28,13 +28,13 @@ this.proficiency=5;
 this.proficiency=6;    
 }
 this.stats=stats;
-this.calcMods=calcMods; 
+this.modArray=modArray;
 }
 }
 
 class Npc extends Character{
-constructor(name, Class, level, dmname, race, alignment, experince, proficiency, stats){
-super(name, Class, level, dmname, race, alignment, experince, proficiency, stats); 
+constructor(name, Class, level, dmname, race, alignment, experince, proficiency, stats, modArray){
+super(name, Class, level, dmname, race, alignment, experince, proficiency, stats, modArray); 
 }
 }
 
@@ -54,19 +54,6 @@ function storeMoney(){
 //I need help with the storing? 
 //Guys help me out on this    
 
-}
-
-
-
-function calcMods(){
-this.stats.forEach(myFunction); 
-function myFunction(){
-    let mods=(stats[i]-10)/2;
-    const modifier=[];
-    modifier.push(mods[i]); 
-    i++;
-}
-return modifier;
 }
 
 let npc={
@@ -145,6 +132,14 @@ function getInfo(){
   // let hitPoints=document.getElementById("hp");
     const stats=[]; 
     stats.push(str.value, dex.value,con.value, int.value, wis.value, cha.value); 
+    stats.forEach(calcMods);
+    function calcMods(){
+    let mod=(stats[i]-10)/2;
+    const modArray=[];
+    modArray.push(Math.round(mod));
+    i++;
+    return modArray;
+    }
     if (h.value=="Character"){
     const name=a.value;
     const Class=b.value;
@@ -154,7 +149,7 @@ function getInfo(){
     const alignment=f.value;
     const experience=g.value;
     let proficiency=0;
-    const char=new Character(name, Class, level, playername, race, alignment, experience, proficiency, stats); 
+    const char=new Character(name, Class, level, playername, race, alignment, experience, proficiency, stats, modArray); 
     return char; 
     }else if (h.value=="NPC"){
     const name=a.value;
@@ -165,7 +160,7 @@ function getInfo(){
     const alignment=f.value;
     const experience=g.value;
     let proficiency=0;
-    const npc=new Npc(name, Class, level, playername, race, alignment, experience, proficiency, stats); 
+    const npc=new Npc(name, Class, level, playername, race, alignment, experience, proficiency, stats, modArray); 
     return npc;    
     }
  
