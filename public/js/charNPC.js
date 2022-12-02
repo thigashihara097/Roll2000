@@ -132,13 +132,11 @@ function getInfo(){
   // let hitPoints=document.getElementById("hp");
     const stats=[]; 
     stats.push(str.value, dex.value,con.value, int.value, wis.value, cha.value); 
-    stats.forEach(calcMods);
-    function calcMods(){
-    let mod=(stats-10)/2;
-    const modArray=[];
-    modArray.push(Math.round(mod));
-    return modArray;
-    }
+    const mods=[]; 
+    stats.forEach(function(){
+    let mod=(stats-10)/2; 
+    mods.push(Math.round(mod));
+    });
     if (h.value=="Character"){
     const name=a.value;
     const Class=b.value;
@@ -148,7 +146,7 @@ function getInfo(){
     const alignment=f.value;
     const experience=g.value;
     let proficiency=0;
-    const char=new Character(name, Class, level, playername, race, alignment, experience, proficiency, stats, calcMods); 
+    const char=new Character(name, Class, level, playername, race, alignment, experience, proficiency, stats, mods); 
     return char; 
     }else if (h.value=="NPC"){
     const name=a.value;
@@ -159,7 +157,7 @@ function getInfo(){
     const alignment=f.value;
     const experience=g.value;
     let proficiency=0;
-    const npc=new Npc(name, Class, level, playername, race, alignment, experience, proficiency, stats, calcMods); 
+    const npc=new Npc(name, Class, level, playername, race, alignment, experience, proficiency, stats, mods); 
     return npc;    
     }
  
