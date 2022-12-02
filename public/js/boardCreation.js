@@ -17,7 +17,7 @@ function main() {
         console.log(b);
 
         // Add characters to sidebar
-        let a = ["a", "b", "c"]
+        let a = ["abra", "cadabra", "alakazam"]     // Temp demo variable before integration :)
         displayCharacters(a);
     }
     
@@ -31,6 +31,8 @@ function main() {
             let c = document.createElement("p");
             document.querySelector("main").querySelectorAll("div")[1].appendChild(c);
             c.textContent = character;
+            c.setAttribute("draggable", "true");
+            c.addEventListener("dragstart", dragStart);
         }
     }
 
@@ -84,6 +86,10 @@ function main() {
         let p = document.createElement("p");
         c.appendChild(p);
         p.textContent = content;
+
+        c.addEventListener("dragover", dragOver);
+        c.addEventListener("drop", drop);
+        c.addEventListener("dragend", dragEnd);
     }
 
     // DOM manipulation function - Changes the visual appearance of wall tiles
@@ -106,7 +112,7 @@ function main() {
         this.col = col;
 
         // Add a corresponding cell to the table
-        addCell(row, "(" + row + ", " + col + ")");
+        addCell(row, null);
     }
 
     // Make wall Tile method
@@ -128,5 +134,34 @@ function main() {
     // toString Tile method
     Tile.prototype.toString = function() {
         return this.contents;
+    }
+
+
+    // When a drag starts
+    function dragStart(event) {
+        event.dataTransfer.setData("text/html", event.target.innerHTML);
+    }
+
+    // Preparing table cells for dropping
+    function dragOver(event) {
+        event.preventDefault();
+        event.dataTransfer.dropEffect = "move";
+    }
+
+    // Actually dropping
+    function drop(event) {
+        event.preventDefault();
+        let character = event.dataTransfer.getData("text/html");
+        let p = document.createElement("p");
+        event.target.appendChild(p);
+        p.innerHTML = character;
+    }
+
+    // After a drop is complete
+    function dragEnd(event) {
+        console.log(event.target)
+        if(event.dataTransfer.dropEffect !== "none") {
+            event.target.remove();
+        }
     }
 }
