@@ -133,11 +133,11 @@ function getInfo(){
     const stats=[]; 
     stats.push(str.value, dex.value,con.value, int.value, wis.value, cha.value); 
     const mods=[]; 
-    stats.forEach(myfunction); 
-    function myfunction(){
-    let mod=(stats.value-10)/2; 
-    mods.push(Math.round(mod));
-}
+    for (let i=0; i<stats.length; i++)
+    let num=stats[i]; 
+    let calc=(num-10)/2;
+     mods.push(Math.round(calc));
+    }
     if (h.value=="Character"){
     const name=a.value;
     const Class=b.value;
