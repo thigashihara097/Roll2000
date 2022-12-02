@@ -46,17 +46,15 @@ function main() {
         // Variables
         this.width = w;
         this.height = h;
-        this.tiles = [];
 
         // Create a blank table to display the board later
         addTable();
 
         // Populate tiles array
         for(let i = 0; i < w; i++) {
-            this.tiles[i] = [];
             addRow();
             for(let j = 0; j < h; j++) {
-                this.tiles[i][j] = new Tile(null, i, j);
+                addCell(i, null);
             }
         }
     }
@@ -100,40 +98,6 @@ function main() {
         } else {
             c.classList.remove("wall");
         }
-    }
-
-
-    // Tile object
-    function Tile(contents, row, col) {
-        // Variables
-        this.wall = false;
-        this.contents = contents;
-        this.row = row;
-        this.col = col;
-
-        // Add a corresponding cell to the table
-        addCell(row, null);
-    }
-
-    // Make wall Tile method
-    Tile.prototype.setWall = function(cell) {
-        console.log("clicked")
-        if(this.wall == true) {
-            this.wall == false;
-        } else {
-            this.wall = true;
-        }
-        wallVisual(cell, this.wall);
-    }
-
-    // Change tile contents Tile method
-    Tile.prototype.changeContents = function(content) {
-        this.contents = content;
-    }
-
-    // toString Tile method
-    Tile.prototype.toString = function() {
-        return this.contents;
     }
 
 
