@@ -3,13 +3,11 @@ addEventListener('DOMContentLoaded', button);
 
 function button(){
 let submit= document.querySelector('button');
-submit.addEventListener("click", characterInfo);
+submit.addEventListener("click", getInfo);
 }
 
-
 class Character{
-constructor(name, Class, level, dmname, race, alignment, experince){
-let proficiency=0;
+constructor(name, Class, level, dmname, race, alignment, experince, proficiency,stats){
 this.name=name;
 this.Class=Class;
 this.level=level;
@@ -17,6 +15,7 @@ this.dmname=dmname;
 this.race=race; 
 this.alignment=alignment;
 this.experience=experince;
+this.proficiency=proficiency;
 if(this.level>=1 && this.level<5){
 proficiency=2;
 }else if (this.level>=5 && this.level<9){
@@ -28,12 +27,13 @@ proficiency=5;
 }else if(this.level>=17){
 proficiency=6;    
 }
+this.stats=stats;
 }
 }
 
 class Npc extends Character{
-constructor(name, Class, level, dmname, race, alignment, experince){
-super(name, Class, level, dmname, race, alignment, experince); 
+constructor(name, Class, level, dmname, race, alignment, experince, proficiency, stats){
+super(name, Class, level, dmname, race, alignment, experince, proficiency, stats); 
 }
 }
 
@@ -80,18 +80,13 @@ We need these when rolling specific things, such as initiative.
 
 
 let npc={
-    name: "", class: "",  level:1, dmname: "", 
-    race: "", alignment: "", experience:0, 
-   stats:[],
-   /*Strength is stats[0], dexterity is stats[1], constitution is stats[2], 
-   intelligence is stats[3], wisdom is stats[4], charisma is stats[5].
-*/
+    
     statMods:[], 
       /*Strength modifier is statmods[0], dexterity modifier is statmods[1], 
       constitution modifier is statmods[2], intelligence modifier is statmods[3], 
       wisdom modifier is statmods[4], charisma is statmods[5].
 */
-perception:0, inspiration:0, proficiency:0,
+perception:0, inspiration:0, 
     saveThrows:[0, 0, 0, 0, 0, 0],
 /* saveThrows[0] is strength saving throw, saveThrows[1] is dexterity saving throw, 
 saveThrows[2] is constitution saving throw, saveThrows[3] is intelligence saving throw, 
@@ -120,19 +115,14 @@ equiptment:[]
 
 //Create object for storing character sheet info
 let character={
-    name: "",  class: "",  level:1, playername: "", 
-    race: "", alignment: "", experience:0,
-    stats:[],
-   /*Strength is stats[0], dexterity is stats[1], constitution is stats[2], 
-   intelligence is stats[3], wisdom is stats[4], charisma is stats[5].
-*/
+    
 
     statMods:[], 
      /*Strength modifier is statmods[0], dexterity modifier is statmods[1], 
       constitution modifier is statmods[2], intelligence modifier is statmods[3], 
       wisdom modifier is statmods[4], charisma is statmods[5].
 */
-perception:0, inspiration:0, proficiency:0,
+perception:0, inspiration:0, 
 saveThrows:[0, 0, 0, 0, 0, 0],
 /* saveThrows[0] is strength saving throw, saveThrows[1] is dexterity saving throw, 
 saveThrows[2] is constitution saving throw, saveThrows[3] is intelligence saving throw, 
@@ -157,9 +147,7 @@ spellAttackBonus:1,
 equiptment:[]
 };
 
-
-//Actually stores the info
-function characterInfo(){
+function getInfo(){
     let a=document.getElementById("Name"); 
     let b=document.getElementById("characterClass");
     let c=document.getElementById("level");
@@ -174,19 +162,46 @@ function characterInfo(){
      let int=document.getElementById("int");
      let wis=document.getElementById("wis");
      let cha=document.getElementById("cha");
-     let ins=document.getElementById("ins");
-     let pb=document.getElementById("prof");
-     let arc=document.getElementById("armor");
-     let speed=document.getElementById("speed");
-    let hitPoints=document.getElementById("hp");
+    const stats=[]; 
+    stats.push(str.value, dex.value,con.value, int.value, wis.value, cha.value); 
+    if (h.value=="Character"){
+    const name=a.value;
+    const Class=b.value;
+    const level=c.value;
+    const playername=d.value;
+    const race=e.value;
+    const alignment=f.value;
+    const experience=g.value;
+    let proficiency=0;
+    const char=new Character(name, Class, level, playername, race, alignment, experience, proficiency, stats); 
+    return char; 
+    }else if (h.value=="NPC"){
+    const name=a.value;
+    const Class=b.value;
+    const level=c.value;
+    const playername=d.value;
+    const race=e.value;
+    const alignment=f.value;
+    const experience=g.value;
+    let proficiency=0;
+    const npc=new Npc(name, Class, level, playername, race, alignment, experience, proficiency, stats); 
+    return npc;    
+    }
+ 
+}
+
+function getStats(){
+
+}
+
+
+//Actually stores the info
+function characterInfo(){
     if(h.value=="Character"){
-    character.name=a.value;
-    character.class=b.value;
-    character.level=c.value;
-    character.playername=d.value;
-    character.race=e.value;
-    character.alignment=f.value;
-    character.experience=g.value;
+         let ins=document.getElementById("ins");
+         let arc=document.getElementById("armor");
+         let speed=document.getElementById("speed");
+        let hitPoints=document.getElementById("hp");
     character.profLang.push("Common");
     character.stats.push(str.value, dex.value, con.value, int.value, wis.value, cha.value);
         let sMod=(str.value-10)/2;
@@ -197,9 +212,9 @@ function characterInfo(){
         let chMod=(cha.value-10)/2;
         character.statMods.push(Math.round(sMod), Math.round(dMod), Math.round(cMod), Math.round(iMod),
         Math.round(wMod), Math.round(chMod));
-        character.moreStats[0]=10+character.statMods[4];
-        character.moreStats[1]=ins.value;
-        character.moreStats[2]=pb.value;
+        //character.moreStats[0]=10+character.statMods[4];
+       // character.moreStats[1]=ins.value;
+       // character.moreStats[2]=pb.value;
         character.aC=arc.value;
         character.initiative=Math.round(dMod);
         character.movSpeed=speed.value;
@@ -222,9 +237,9 @@ function characterInfo(){
         let chMod=(cha.value-10)/2;
         npc.statMods.push(Math.round(sMod), Math.round(dMod), Math.round(cMod), Math.round(iMod),
         Math.round(wMod), Math.round(chMod));
-        npc.moreStats[0]=10+npc.statMods[4];
-        npc.moreStats[1]=ins.value;
-        npc.moreStats[2]=pb.value;
+       // npc.moreStats[0]=10+npc.statMods[4];
+       // npc.moreStats[1]=ins.value;
+       // npc.moreStats[2]=pb.value;
         npc.aC=arc.value;
         npc.initiative=Math.round(dMod);
         npc.movSpeed=speed.value;
