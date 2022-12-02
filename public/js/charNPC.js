@@ -133,10 +133,11 @@ function getInfo(){
     const stats=[]; 
     stats.push(str.value, dex.value,con.value, int.value, wis.value, cha.value); 
     const mods=[]; 
-    stats.forEach(function(){
-    let mod=(stats-10)/2; 
+    stats.forEach(myfunction); 
+    function myfunction(){
+    let mod=(stats.values-10)/2; 
     mods.push(Math.round(mod));
-    });
+}
     if (h.value=="Character"){
     const name=a.value;
     const Class=b.value;
@@ -168,7 +169,6 @@ function characterInfo(){
     if(h.value=="Character"){
          
     character.profLang.push("Common");
-    character.stats.push(str.value, dex.value, con.value, int.value, wis.value, cha.value);
         let sMod=(str.value-10)/2;
         let dMod=(dex.value-10)/2;
         let cMod=(con.value-10)/2;
@@ -177,21 +177,12 @@ function characterInfo(){
         let chMod=(cha.value-10)/2;
         character.statMods.push(Math.round(sMod), Math.round(dMod), Math.round(cMod), Math.round(iMod),
         Math.round(wMod), Math.round(chMod));
-        //character.moreStats[0]=10+character.statMods[4];
-       // character.moreStats[1]=ins.value;
-       // character.moreStats[2]=pb.value;
         character.aC=arc.value;
         character.initiative=Math.round(dMod);
         character.movSpeed=speed.value;
         character.hP=hitPoints.value;
     }else if(h.value=="NPC"){
-        npc.name=a.value;
-        npc.class=b.value;
-        npc.level=c.value;
-        npc.dmname=d.value;
-        npc.race=e.value;
-        npc.alignment=f.value;
-        npc.experience=g.value;
+       
         npc.profLang.push("Common");
         npc.stats.push(str.value, dex.value, con.value, int.value, wis.value, cha.value);
         let sMod=(str.value-10)/2;
@@ -202,9 +193,6 @@ function characterInfo(){
         let chMod=(cha.value-10)/2;
         npc.statMods.push(Math.round(sMod), Math.round(dMod), Math.round(cMod), Math.round(iMod),
         Math.round(wMod), Math.round(chMod));
-       // npc.moreStats[0]=10+npc.statMods[4];
-       // npc.moreStats[1]=ins.value;
-       // npc.moreStats[2]=pb.value;
         npc.aC=arc.value;
         npc.initiative=Math.round(dMod);
         npc.movSpeed=speed.value;
