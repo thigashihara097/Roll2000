@@ -21,7 +21,7 @@ function rolld6(){
 function rolld4(){
     return rolldNum(4);
 }
-function rolld5(){
+function roll5(){
     return 5;
 }
 
@@ -32,7 +32,14 @@ function Attack(weapon, attackee){
    if(hitCheck(weapon, attackee)){
         return damage(weapon, attackee); 
     }
+    return 0;
 }
+function Attackt(weapon, attackee){
+    if(hitCheckt(weapon, attackee, roll5())){
+         return damage(weapon, attackee); 
+     }
+     return 0;
+ }
 
 function damage(source, damagee){
     let d=source.dealDamage();
@@ -49,8 +56,9 @@ function hitCheck(attacker, attackee){
     hitCheckt(attacker, attackee, rolld20)
 }
 function hitCheckt(attacker, attackee, roller){
-    let r= roller();
-    r+=attacker.hitmod();
+    let r= roller;
+    let h=attacker.hitmod();
+    r+=h;
     if(r>=attackee.ac){
         return true;
     }
@@ -72,6 +80,41 @@ function cast(spell, targets){
         });
     }
 }
+//added functions for testing code
+
+function testCharacter(str,dex,ac,hp){
+    this.str=str;
+    this.dex=dex;
+    this.ac=ac;
+    this.hp=hp;
+}
+
+function Itemt ( isWeapon, attackDieFaces, attackDieNumber, character) {
+    this.isWeapon = isWeapon; //boolean
+    this.attackDieFaces = attackDieFaces; //corresponds to the faces of the die used to calculate damage
+    this.attackDieNumber = attackDieNumber; //corresponds with the number of die used when attacking
+    this.character= character;
+}
+Itemt.prototype.hitmod = function () {
+    return this.character.str;
+}
+// damage calc
+Itemt.prototype.dealDamage = function () {
+   if (!this.isWeapon){ //case of improvised weapon
+        return rolldNum(4);
+    }
+    numDie = this.attackDieNumber;
+    let damage = 0;
+    while (numDie > 0){
+        damage += rolldNum (this.attackDieFaces);
+        numDie--;
+    }
+    return this.attackDieFaces;
+}
+
+Itemt.prototype.returnIfWeapon = function(){return this.isWeapon}
+Itemt.prototype.setIfWeapon = function(attack){this.isWeapon = attack}
+
 /*
 initList takes an array of combatants and sorts them by their
 initative roll which it makes. it then checks whether they are an 
@@ -101,3 +144,8 @@ depending on which it is.
 module.exports.roll5=roll5;
 module.exports.hitCheckt=hitCheckt;
 module.exports.hitCheck=hitCheck;
+module.exports.Itemt=Itemt;
+module.exports.testCharacter=testCharacter;
+module.exports.Attack=Attack;
+module.exports.Attackt=Attackt;
+module.exports.damage=damage;
