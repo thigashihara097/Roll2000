@@ -145,7 +145,7 @@ function main() {
         event.preventDefault();
         let character = event.dataTransfer.getData("text/html");
         let p = document.createElement("p");
-        event.target.appendChild(p);
+        this.appendChild(p);
         p.innerHTML = character;
 
         // Make it movable itself
