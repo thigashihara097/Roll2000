@@ -32,6 +32,12 @@ app.get("/character", (req, res) => {
     res.sendFile(__dirname + '/views/character.html');
 })
 
+// Post to server
+app.post("/postingThis", (req, res) => {
+    console.log(req.body);
+    res.json({ text: "Successful" });
+})
+
 // starts web server listening on localhost at port 3000
 app.listen(port, () => {
     console.log('Listening on port 3000...');

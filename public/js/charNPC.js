@@ -2,8 +2,32 @@
 addEventListener('DOMContentLoaded', button);
 
 function button(){
-let submit= document.querySelector('button');
-submit.addEventListener("click", getInfo);
+let save = document.querySelector("#submit");
+save.addEventListener("click", getInfo);
+}
+// Post to server stuff    PS it doesn't work yet!
+function serverButtonListener(){
+    let button = document.querySelector("#post");
+    button.addEventListener("click", async function(){
+        let input = document.querySelector("#creation");
+        let url = "/postingThis"
+        let response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                typedText: input.entries
+            })
+        })
+        
+        let result = await response.json();
+        console.log(result)
+
+    });
+}
+function postServer(){
+
 }
 
 //Need to add death saves and money but otherwise done
@@ -189,16 +213,37 @@ function getInfo(){
     const charArray=[];
     const NpcArray=[];
     if (h.value=="Character"){
-    const char=new Character(name, Class, level, playername, race, alignment, experience, proficiency, stats, mods, perception, 
+    let char = "";
+    char=new Character(name, Class, level, playername, race, alignment, experience, proficiency, stats, mods, perception, 
     inspiration, aC, hp, movSpeed, initiative, profLang, spellCastingClass, saveThrows, savedEQ, Skills, spellCastingAbility, 
     SpellSaveDC, spellAttackBonus, cantrips, lvl1, lvl2, lvl3, lvl4, lvl5, lvl6, lvl7, lvl8, lvl9); 
     charArray.push(char);
+
+    // I don't know how I did it but this somehow let me print stuff to the character page, but its really messy
+    // when it shows up
+    let html = "";
+    let entries = Object.entries(char);
+    html += entries;
+    document.getElementById("creation").innerHTML = html;
+    console.log(str);
+
     return char; 
     }else if (h.value=="NPC"){
-    const npc=new Npc(name, Class, level, playername, race, alignment, experience, proficiency, stats, mods, perception, 
+    let npc="";
+    npc=new Npc(name, Class, level, playername, race, alignment, experience, proficiency, stats, mods, perception, 
     inspiration, aC, hp, movSpeed, initiative, profLang, spellCastingClass, saveThrows, savedEQ, Skills, spellCastingAbility, 
     SpellSaveDC, spellAttackBonus, cantrips, lvl1, lvl2, lvl3, lvl4, lvl5, lvl6, lvl7, lvl8, lvl9); 
     NpcArray.push(npc);
+
+    // I did the same thing for the npc section, There's no visible difference because This is only printing 
+    // the "object" which is named either character or npc
+
+    let html = "";
+    let entries = Object.entries(npc);
+    html += entries;
+    document.getElementById("creation").innerHTML = html;
+    console.log(str);
+
     return npc;    
     }
 }
