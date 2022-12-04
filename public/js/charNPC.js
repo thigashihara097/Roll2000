@@ -103,6 +103,7 @@ function getInfo(){
     let arc=document.getElementById("armor");
     let speed=document.getElementById("speed");
     let hitPoints=document.getElementById("hp");
+    let eq=document.getElementById("equiptment");
     const profLang=[];
     profLang.push("Common");
     const aC=arc.value;
