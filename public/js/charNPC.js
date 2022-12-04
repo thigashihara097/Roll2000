@@ -8,7 +8,7 @@ submit.addEventListener("click", getInfo);
 
 class Character{
 constructor(name, Class, level, dmname, race, alignment, experince, proficiency,stats, modArray, perception, 
-inspiration, aC, hp, movSpeed, initiative, profLang, spellCastingClass){
+inspiration, aC, hp, movSpeed, initiative, profLang, spellCastingClass, saveThrows){
 this.name=name; this.Class=Class; this.level=level; this.dmname=dmname; 
 this.race=race; this.alignment=alignment; this.experience=experince;
 this.proficiency=proficiency;
@@ -29,59 +29,37 @@ this.hp=hp;
 this.movSpeed=movSpeed;
 this.initiative=initiative;
 this.profLang=profLang;
+this.saveThrows=saveThrows;
 this.spellCastingClass=spellCastingClass;
 }
 }
 
 class Npc extends Character{
 constructor(name, Class, level, dmname, race, alignment, experince, proficiency, stats, modArray, perception, 
-inspiration, aC, hp, movSpeed, initiative, profLang, spellCastingClass){
+inspiration, aC, hp, movSpeed, initiative, profLang, spellCastingClass, saveThrows){
 super(name, Class, level, dmname, race, alignment, experince, proficiency, stats, modArray, perception, 
-inspiration, aC, hp, movSpeed, initiative, profLang, spellCastingClass); 
+inspiration, aC, hp, movSpeed, initiative, profLang, spellCastingClass, saveThrows); 
 }
-}
-
-function storeSpells(){
-//I need help with the storing? 
-//Guys help me out on this    
-}
-
-function storeMoney(){
-//I need help with the storing? 
-//Guys help me out on this    
 }
 
 let npc={
-    saveThrows:[0, 0, 0, 0, 0, 0],
-/* saveThrows[0] is strength saving throw, saveThrows[1] is dexterity saving throw, 
-saveThrows[2] is constitution saving throw, saveThrows[3] is intelligence saving throw, 
-saveThrows[4] is wisdom saving throw and saveThrows[5] is charisma saving throw.
-*/
 Skills:[],
 spellCastingAbility:1,
 spellDC:1, 
 spellAttackBonus:1, 
 //spells:[lvl][spells], 
 //money:[type][amt], 
-equiptment:[]
+//equiptment:[]
 };
 
-
-
-//Create object for storing character sheet info
 let character={ 
-saveThrows:[0, 0, 0, 0, 0, 0],
-/* saveThrows[0] is strength saving throw, saveThrows[1] is dexterity saving throw, 
-saveThrows[2] is constitution saving throw, saveThrows[3] is intelligence saving throw, 
-saveThrows[4] is wisdom saving throw and saveThrows[5] is charisma saving throw.
-*/
 Skills:[],
 spellCastingAbility:1,
 spellDC:1, 
 spellAttackBonus:1, 
 //spells:[lvl][spells], 
 //money:[type][amt], 
-equiptment:[]
+//equiptment:[]
 };
 
 function getInfo(){
@@ -104,7 +82,15 @@ function getInfo(){
     let speed=document.getElementById("speed");
     let hitPoints=document.getElementById("hp");
     let eq=document.getElementById("equiptment");
+    let stS=document.getElementById("sst"); 
+    let dS=document.getElementById("dst"); 
+    let coS=document.getElementById("cost");
+    let iS=document.getElementById("ist");
+    let wS=document.getElementById("wst"); 
+    let cS=document.getElementById("cst");
+    const saveThrows=[];
     const profLang=[];
+    saveThrows.push(stS.value, dS.value, coS.value, iS.value, wS.value, cS.value);
     profLang.push("Common");
     const aC=arc.value;
     const hp=hitPoints.value;
@@ -135,11 +121,11 @@ function getInfo(){
     const spellCastingClass=b.value;
     if (h.value=="Character"){
     const char=new Character(name, Class, level, playername, race, alignment, experience, proficiency, stats, mods, perception, 
-    inspiration, aC, hp, movSpeed, initiative, profLang, spellCastingClass); 
+    inspiration, aC, hp, movSpeed, initiative, profLang, spellCastingClass, saveThrows); 
     return char; 
     }else if (h.value=="NPC"){
     const npc=new Npc(name, Class, level, playername, race, alignment, experience, proficiency, stats, mods, perception, 
-    inspiration, aC, hp, movSpeed, initiative, profLang, spellCastingClass); 
+    inspiration, aC, hp, movSpeed, initiative, profLang, spellCastingClass, saveThrows); 
     return npc;    
     }
 }
