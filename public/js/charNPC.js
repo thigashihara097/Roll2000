@@ -8,7 +8,7 @@ submit.addEventListener("click", getInfo);
 
 class Character{
 constructor(name, Class, level, dmname, race, alignment, experince, proficiency,stats, modArray, perception, 
-inspiration, aC, hp, movSpeed, initiative, profLang, spellCastingClass, saveThrows){
+inspiration, aC, hp, movSpeed, initiative, profLang, spellCastingClass, saveThrows, savedEQ, Skills){
 this.name=name; this.Class=Class; this.level=level; this.dmname=dmname; 
 this.race=race; this.alignment=alignment; this.experience=experince;
 this.proficiency=proficiency;
@@ -30,36 +30,32 @@ this.movSpeed=movSpeed;
 this.initiative=initiative;
 this.profLang=profLang;
 this.saveThrows=saveThrows;
+this.Skills=Skills;
+this.savedEQ=savedEQ;
 this.spellCastingClass=spellCastingClass;
 }
 }
 
 class Npc extends Character{
 constructor(name, Class, level, dmname, race, alignment, experince, proficiency, stats, modArray, perception, 
-inspiration, aC, hp, movSpeed, initiative, profLang, spellCastingClass, saveThrows){
+inspiration, aC, hp, movSpeed, initiative, profLang, spellCastingClass, saveThrows, savedEQ, Skills){
 super(name, Class, level, dmname, race, alignment, experince, proficiency, stats, modArray, perception, 
-inspiration, aC, hp, movSpeed, initiative, profLang, spellCastingClass, saveThrows); 
+inspiration, aC, hp, movSpeed, initiative, profLang, spellCastingClass, saveThrows, savedEQ, Skills); 
 }
 }
 
 let npc={
-Skills:[],
 spellCastingAbility:1,
 spellDC:1, 
 spellAttackBonus:1, 
 //spells:[lvl][spells], 
-//money:[type][amt], 
-//equiptment:[]
 };
 
 let character={ 
-Skills:[],
 spellCastingAbility:1,
 spellDC:1, 
 spellAttackBonus:1, 
 //spells:[lvl][spells], 
-//money:[type][amt], 
-//equiptment:[]
 };
 
 function getInfo(){
@@ -88,10 +84,36 @@ function getInfo(){
     let iS=document.getElementById("ist");
     let wS=document.getElementById("wst"); 
     let cS=document.getElementById("cst");
+    //All the skill values
+    let acro=document.getElementById("acro"); 
+    let ah=document.getElementById("ah"); 
+    let arcana=document.getElementById("arcana");
+    let ath=document.getElementById("ath");
+    let dec=document.getElementById("dec"); 
+    let his=document.getElementById("his"); 
+    let insight=document.getElementById("insight");
+    let intim=document.getElementById("intim");
+    let inv=document.getElementById("inv"); 
+    let med=document.getElementById("med"); 
+    let nat=document.getElementById("nat");
+    let per=document.getElementById("per");
+    let perfor=document.getElementById("perfor"); 
+    let persua=document.getElementById("persua"); 
+    let relig=document.getElementById("relig");
+    let soh=document.getElementById("soh");
+    let stea=document.getElementById("stea"); 
+    let surv=document.getElementById("surv"); 
+    //Arrays for storing info
     const saveThrows=[];
     const profLang=[];
+    const Skills=[];
+    const eqval=eq.value;
+    const savedEQ=eqval.split(',');
     saveThrows.push(stS.value, dS.value, coS.value, iS.value, wS.value, cS.value);
     profLang.push("Common");
+    Skills.push(acro.value, ah.value, arcana.value, ath.value, dec.value, his.value, insight.value, 
+    intim.value, inv.value, med.value, nat.value, per.value, perfor.value, persua.value, relig.value, 
+    soh.value, stea.value, surv.value);
     const aC=arc.value;
     const hp=hitPoints.value;
     const movSpeed=speed.value;
@@ -115,17 +137,15 @@ function getInfo(){
     const experience=g.value;
     const inspiration=ins.value;
     let proficiency=0;
-    let deathSavesSuccesses=0;
-    let deathSavesFails=0;
     const initiative=mods[1];
     const spellCastingClass=b.value;
     if (h.value=="Character"){
     const char=new Character(name, Class, level, playername, race, alignment, experience, proficiency, stats, mods, perception, 
-    inspiration, aC, hp, movSpeed, initiative, profLang, spellCastingClass, saveThrows); 
+    inspiration, aC, hp, movSpeed, initiative, profLang, spellCastingClass, saveThrows, savedEQ, Skills); 
     return char; 
     }else if (h.value=="NPC"){
     const npc=new Npc(name, Class, level, playername, race, alignment, experience, proficiency, stats, mods, perception, 
-    inspiration, aC, hp, movSpeed, initiative, profLang, spellCastingClass, saveThrows); 
+    inspiration, aC, hp, movSpeed, initiative, profLang, spellCastingClass, saveThrows, savedEQ, Skills); 
     return npc;    
     }
 }
