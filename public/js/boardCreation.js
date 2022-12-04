@@ -1,6 +1,5 @@
 /* List of things to do:
     Add a list of characters on the board (in the backend)
-    Be able to take the characters off the board
     When you right-click on a cell it pulls up a pop up
 
 */
@@ -10,6 +9,10 @@ addEventListener("DOMContentLoaded", main);
 function main() {
     // Submit button listener
     document.querySelector("#create").addEventListener("click", createBoard);
+
+
+    // Global variables
+    let dragEl;         // Element being dragged
 
 
     // Create a new board
@@ -45,7 +48,6 @@ function main() {
             }
         } else {
             let d = document.querySelector("#character");
-            console.log(d)
             d.addEventListener("dragover", dragOver);
             d.addEventListener("drop", drop);
         }
@@ -130,30 +132,60 @@ function main() {
     // When a drag starts
     function dragStart(event) {
         event.dataTransfer.setData("text/html", event.target.innerHTML);
-        console.log("start")
+        dragEl = event.target;
     }
 
     // Preparing table cells for dropping
     function dragOver(event) {
         event.preventDefault();
         event.dataTransfer.dropEffect = "move";
-        console.log("over")
     }
 
     // Actually dropping
     function drop(event) {
         event.preventDefault();
+
+        console.log(event.target)
+        // Extract relevant elements
+        let c = this.querySelector("p");
         let character = event.dataTransfer.getData("text/html");
-        let p = document.createElement("p");
-        this.appendChild(p);
-        p.innerHTML = character;
 
-        // Make it movable itself
-        p.setAttribute("draggable", "true");
-        p.addEventListener("dragstart", dragStart);
-        p.addEventListener("dragend", dragEnd);
+        console.log(c)
+        console.log(c.textContent)
 
-        console.log("boop")
+        // Check if the p in the cell is empty
+        if(c.textContent.length == 0) {
+            console.log("empty")
+            c.innerHTML = character;
+
+            // Check if the character is leaving a square which will be empty and fill it with a p if so
+            if(dragEl.parentNode.tagName == "TD") {
+                console.log("cell")
+                let fill = document.createElement("p");
+                dragEl.parentNode.appendChild(fill);
+            }
+
+            console.log("events 1")
+        } else {
+            console.log("filled")
+            let target = c.cloneNode(true);
+            let dr = dragEl.cloneNode(true);
+            
+            c.replaceWith(dr);
+            dragEl.replaceWith(target)
+
+            c = dr;
+
+            // Make both new element in the old place movable
+            console.log("events 2")
+            target.setAttribute("draggable", "true");
+            target.addEventListener("dragstart", dragStart);
+            target.addEventListener("dragend", dragEnd);
+        }
+            // Make the created element movable itself
+            c.setAttribute("draggable", "true");
+            c.addEventListener("dragstart", dragStart);
+            c.addEventListener("dragend", dragEnd);
     }
 
     // After a drop is complete
