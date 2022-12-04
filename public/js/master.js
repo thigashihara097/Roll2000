@@ -49,8 +49,9 @@ function hitCheck(attacker, attackee){
     hitCheckt(attacker, attackee, rolld20)
 }
 function hitCheckt(attacker, attackee, roller){
-    let r= roller();
-    r+=attacker.hitmod();
+    let r= roller;
+    let h=attacker.hitmod();
+    r+=h;
     if(r>=attackee.ac){
         return true;
     }

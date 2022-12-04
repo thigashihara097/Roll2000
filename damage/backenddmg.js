@@ -28,12 +28,13 @@ function roll5(){
 /*attack function
 takes a attacking object, and a target to attack, returns damage,
 */
-function Attack(weapon, attackee){
-   if(hitCheck(weapon, attackee)){
+function Attack(weapon, attackee,advantage){
+   if(hitCheck(weapon, attackee, advantage)){
         return damage(weapon, attackee); 
     }
     return 0;
 }
+
 function Attackt(weapon, attackee){
     if(hitCheckt(weapon, attackee, roll5())){
          return damage(weapon, attackee); 
@@ -46,17 +47,50 @@ function damage(source, damagee){
     damagee.hp=damagee.hp-d;
     return d;
 }
+/* switch case funtion for use with right click drop down*/
+testCharacter.prototype.charActions=function(action,enemies){
+switch (action){
+    case "Attack":
+        var attack=prompt(this.atkChoice());
+        var attackee=prompt(enemies);
+        attack(attack,attackee,0);
+        break;
+    case "Cast":
+        var spell=prompt(this.spells());
+        var target=prompt(enemies);
+        cast(spell,target);
+        break;    
+}
+}
+testCharacter.prototype.atkChoice=function(){
+    return this.Attacks;
+}
+testCharacter.prototype.spells=function(){
+    return this.spells;
+}
 /*
 hit function
 takes a source that can atttempt attacks and and an attackee 
 and checks if an attack hits, returns true if the attack hit 
 and false if the attack misses. 
 */
-function hitCheck(attacker, attackee){
-    hitCheckt(attacker, attackee, rolld20)
+function hitCheck(attacker, attackee, advantage){
+    hitCheckt(attacker, attackee, advantage, rolld20)
 }
-function hitCheckt(attacker, attackee, roller){
-    let r= roller;
+function hitCheckt(attacker, attackee, advantage, roller){
+    if(advantage>0){
+        let r1= new roller;
+        let r2= new roller;
+        let r= Math.max(r1,r2);
+    }
+    else if(advantage<0){
+        let r1= new roller;
+        let r2= new roller;
+        let r= Math.min(r1,r2);
+    }
+    else{
+        let r= new roller;
+    }
     let h=attacker.hitmod();
     r+=h;
     if(r>=attackee.ac){
@@ -122,7 +156,7 @@ NPC, PC or DMPC, providing the user with prompts at each turn
 depending on which it is.
 */
 
-/*function initList(combatants){
+function initList(combatants){
     
     for(let i=0; i<combatants.length; i++){
         combatants[i].curinit=rolld20()+combatants.initiative;
@@ -130,17 +164,10 @@ depending on which it is.
     combatants.sort(function(a, b){return b.curinit - a.curinit});
     for(let i=0; i<combatants.length; i++){
         let c=combatants[i];
-        if (c.isNPC){
-            user prompt
-        }
-        if(c.isPC){
-            user prompt
-        }
-        if(c.isDMPC){
-            user prompt
-        }
+        var action=prompt("Attack or Cast?")
+        c.charActions(action);
     }
-}*/
+}
 module.exports.roll5=roll5;
 module.exports.hitCheckt=hitCheckt;
 module.exports.hitCheck=hitCheck;
