@@ -8,7 +8,7 @@ submit.addEventListener("click", getInfo);
 
 class Character{
 constructor(name, Class, level, dmname, race, alignment, experince, proficiency,stats, modArray, perception, 
-inspiration, aC, hp, movSpeed, initiative){
+inspiration, aC, hp, movSpeed, initiative, profLang, spellCastingClass){
 this.name=name; this.Class=Class; this.level=level; this.dmname=dmname; 
 this.race=race; this.alignment=alignment; this.experience=experince;
 this.proficiency=proficiency;
@@ -28,14 +28,16 @@ this.perception=perception; this.inspiration=inspiration; this.aC=aC;
 this.hp=hp;
 this.movSpeed=movSpeed;
 this.initiative=initiative;
+this.profLang=profLang;
+this.spellCastingClass=spellCastingClass;
 }
 }
 
 class Npc extends Character{
 constructor(name, Class, level, dmname, race, alignment, experince, proficiency, stats, modArray, perception, 
-inspiration, aC, hp, movSpeed, initiative){
+inspiration, aC, hp, movSpeed, initiative, profLang, spellCastingClass){
 super(name, Class, level, dmname, race, alignment, experince, proficiency, stats, modArray, perception, 
-inspiration, aC, hp, movSpeed, initiative); 
+inspiration, aC, hp, movSpeed, initiative, profLang, spellCastingClass); 
 }
 }
 
@@ -56,10 +58,6 @@ saveThrows[2] is constitution saving throw, saveThrows[3] is intelligence saving
 saveThrows[4] is wisdom saving throw and saveThrows[5] is charisma saving throw.
 */
 Skills:[],
-profLang:[], 
-deathSavesSuccesses:0,
-deathSavesFails:0,
-spellCastingClass:"",
 spellCastingAbility:1,
 spellDC:1, 
 spellAttackBonus:1, 
@@ -78,10 +76,6 @@ saveThrows[2] is constitution saving throw, saveThrows[3] is intelligence saving
 saveThrows[4] is wisdom saving throw and saveThrows[5] is charisma saving throw.
 */
 Skills:[],
-profLang:[], 
-deathSavesSuccesses:0,
-deathSavesFails:0,
-spellCastingClass:"",
 spellCastingAbility:1,
 spellDC:1, 
 spellAttackBonus:1, 
@@ -109,6 +103,8 @@ function getInfo(){
     let arc=document.getElementById("armor");
     let speed=document.getElementById("speed");
     let hitPoints=document.getElementById("hp");
+    const profLang=[];
+    profLang.push("Common");
     const aC=arc.value;
     const hp=hitPoints.value;
     const movSpeed=speed.value;
@@ -132,23 +128,17 @@ function getInfo(){
     const experience=g.value;
     const inspiration=ins.value;
     let proficiency=0;
+    let deathSavesSuccesses=0;
+    let deathSavesFails=0;
     const initiative=mods[1];
+    const spellCastingClass=b.value;
     if (h.value=="Character"){
     const char=new Character(name, Class, level, playername, race, alignment, experience, proficiency, stats, mods, perception, 
-    inspiration, aC, hp, movSpeed, initiative); 
+    inspiration, aC, hp, movSpeed, initiative, profLang, spellCastingClass); 
     return char; 
     }else if (h.value=="NPC"){
     const npc=new Npc(name, Class, level, playername, race, alignment, experience, proficiency, stats, mods, perception, 
-    inspiration, aC, hp, movSpeed, initiative); 
+    inspiration, aC, hp, movSpeed, initiative, profLang, spellCastingClass); 
     return npc;    
-    }
-}
-
-//Actually stores the info
-function characterInfo(){
-    if(h.value=="Character"){
-    character.profLang.push("Common");
-    }else if(h.value=="NPC"){
-        npc.profLang.push("Common");
     }
 }
