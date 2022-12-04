@@ -6,6 +6,8 @@ let submit= document.querySelector('button');
 submit.addEventListener("click", getInfo);
 }
 
+//Need to add death saves and money but otherwise done
+
 class Character{
 constructor(name, Class, level, dmname, race, alignment, experince, proficiency,stats, modArray, perception, 
 inspiration, aC, hp, movSpeed, initiative, profLang, spellCastingClass, saveThrows, savedEQ, Skills, 
