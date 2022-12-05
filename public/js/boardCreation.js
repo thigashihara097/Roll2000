@@ -13,6 +13,7 @@ function main() {
 
     // Global variables
     let dragEl;         // Element being dragged
+    let charList = [];  // List of characters on the board
 
 
     // Create a new board
@@ -144,28 +145,47 @@ function main() {
     // Actually dropping
     function drop(event) {
         event.preventDefault();
-        // Extract relevant elements
-        let c = this.querySelector("p");
-        //let character = event.dataTransfer.getData("text/html");
 
-        // Check if the p in the cell is empty
-          
-        let t = c.cloneNode(true);
-        let dr = dragEl.cloneNode(true);
+        // Prepare variables
+        let c = this.querySelector("p");        // The inside element of the cell
+        let t = c.cloneNode(true);              // A copy of the element in the cell
+        let dr = dragEl.cloneNode(true);        // A copy of the element being dragged
+
+        // Check if the character is being moved to the board from the list or vice versa
+        if(dragEl.parentNode.nodeName == "DIV" && c.parentNode.nodeName == "TD") {       // If the element came from the list
+            charList.push(dragEl.innerHTML);
+            if(c.textContent.length != 0) {
+                let i = charList.findIndex((n) => n == c.innerHTML)
+                charList.splice(i, 1);
+            }
+        }
+        if(dragEl.parentNode.nodeName == "TD" && c.parentNode.nodeName == "DIV") {      // If the element is leaving the table
+            let i = charList.findIndex((n) => n == dr.innerHTML)
+            charList.splice(i, 1);
             
+            if(c.textContent.length != 0) {
+                charList.push(c.innerHTML);
+            }
+        }
+        
+        console.log("char on board: " + charList)
+
+        // Swap the elements
         c.replaceWith(dr);
         dragEl.replaceWith(t)
 
+        // If a blank p was swapped don't give it draggability
         if(t.textContent.length == 0) {
-            // Make both new element in the old place movable
+            // Make new element in the old place movable
             t.setAttribute("draggable", "true");
             t.addEventListener("dragstart", dragStart);
             t.addEventListener("dragend", dragEnd);
         }
-            // Make the created element movable itself
-            dr.setAttribute("draggable", "true");
-            dr.addEventListener("dragstart", dragStart);
-            dr.addEventListener("dragend", dragEnd);
+
+        // Make the created element movable itself
+        dr.setAttribute("draggable", "true");
+        dr.addEventListener("dragstart", dragStart);
+        dr.addEventListener("dragend", dragEnd);
     }
 
     // After a drop is complete
