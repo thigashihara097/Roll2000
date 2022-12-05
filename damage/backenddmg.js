@@ -51,7 +51,7 @@ function damage(source, damagee){
 testCharacter.prototype.charActions=function(action,enemies){
 switch (action){
     case "Attack":
-        var attack=this.items[parseInt(prompt("select a number"+this.atkChoice()))];
+        var attack=this.items[parseInt(prompt("select a number "+this.atkChoice()))];
         var attackee=prompt(enemies);
         attack(attack,attackee,0);
         break;
