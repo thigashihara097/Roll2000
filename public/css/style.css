@@ -3,7 +3,7 @@
 }
 
 body {
-    background-color: white;
+    background-color: lightgray;
 }
 
 .nav {
@@ -21,7 +21,7 @@ body {
 }
 
 .nav a:hover {
-    background-color: lightgray;
+    background-color: white;
     color: black;
 }
   
@@ -31,7 +31,7 @@ body {
 }
 
 .nav a.home:hover {
-    background-color: lightgray;
+    background-color: white;
     color: black;
 }
 
@@ -42,7 +42,7 @@ body {
 }
 
 .nav a.inLog:hover {
-    background-color: lightgray;
+    background-color: white;
     color: black;
 }
 
@@ -56,11 +56,6 @@ body {
 
 .nav a.account:hover {
     background-color: rgb(165, 0, 165);
-}
-
-.info-wrapper {
-    display: flex;
-    
 }
 
 .home-inputs {
