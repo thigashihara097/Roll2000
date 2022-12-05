@@ -51,7 +51,7 @@ function damage(source, damagee){
 testCharacter.prototype.charActions=function(action,enemies){
 switch (action){
     case "Attack":
-        var attack=prompt(this.atkChoice());
+        var attack=this.items[parseInt(prompt("select a number"+this.atkChoice()))];
         var attackee=prompt(enemies);
         attack(attack,attackee,0);
         break;
@@ -63,7 +63,11 @@ switch (action){
 }
 }
 testCharacter.prototype.atkChoice=function(){
-    return this.Attacks;
+   var str="";
+   for (i = 0; i < this.Attacks.length; i++){
+        str+=i+":"+this.Attacks[i];
+   }
+    return str;
 }
 testCharacter.prototype.spells=function(){
     return this.spells;
@@ -121,13 +125,25 @@ function testCharacter(str,dex,ac,hp){
     this.dex=dex;
     this.ac=ac;
     this.hp=hp;
+    this.Attacks=[];
+    this.items=[];
+    this.weapons=[];
+
+}
+testCharacter.prototype.addItem=function(item){
+    if(item.isWeapon){
+        this.weapons.push(item);
+        this.Attacks.push(item.detailText);
+    }
+    this.items.push(item);
 }
 
-function Itemt ( isWeapon, attackDieFaces, attackDieNumber, character) {
+function Itemt ( isWeapon, attackDieFaces, attackDieNumber, character,detailText) {
     this.isWeapon = isWeapon; //boolean
     this.attackDieFaces = attackDieFaces; //corresponds to the faces of the die used to calculate damage
     this.attackDieNumber = attackDieNumber; //corresponds with the number of die used when attacking
     this.character= character;
+    this.detailText = detailText;
 }
 Itemt.prototype.hitmod = function () {
     return this.character.str;
