@@ -26,9 +26,6 @@ function serverButtonListener(){
 
     });
 }
-function postServer(){
-
-}
 
 //Need to add death saves and money but otherwise done
 
