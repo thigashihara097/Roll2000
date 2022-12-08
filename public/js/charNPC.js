@@ -195,7 +195,7 @@ function getInfo(){
         calc=(num-10)/2;
          mods.push(Math.round(calc));
     }
-    const perception=10+mods[4]+Skills[11];
+    const perception=(10+mods[4])+Skills[11];
     const name=a.value;
     const Class=b.value;
     const level=c.value;
