@@ -3,6 +3,7 @@
 */
 
 const express = require("express");
+const bodyParser = require("body-parser"); // If we get data in a POST, this will parse it for us
 
 
 // Creates an Express application: https://expressjs.com/en/4x/api.html#app
@@ -11,10 +12,12 @@ const app = express();
 const port = 3000;
 
 // Tell express where to find your CSS, JS, and images
+app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
 app.use('/css', express.static(__dirname + 'public/css'));
 app.use('/js', express.static(__dirname + 'public/js'));
 app.use('/img', express.static(__dirname + 'public/img'));
+app.use(bodyParser.json());
 
 
 // A route definition

@@ -5,29 +5,9 @@ function button(){
 let save = document.querySelector("#submit");
 save.addEventListener("click", getInfo);
 }
-// Post to server stuff    PS it doesn't work yet!
-function serverButtonListener(){
-    let button = document.querySelector("#post");
-    button.addEventListener("click", async function(){
-        let input = document.querySelector("#creation");
-        let url = "/postingThis"
-        let response = await fetch(url, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                typedText: input.entries
-            })
-        })
-        
-        let result = await response.json();
-        console.log(result)
 
-    });
-}
 
-//Need to add death saves and money but otherwise done
+//Need to add death s and money but otherwise done
 
 class Character{
 constructor(name, Class, level, dmname, race, alignment, experince, proficiency,stats, modArray, perception, 
@@ -86,7 +66,7 @@ lvl6, lvl7, lvl8, lvl9);
 }
 }
 
-function getInfo(){
+async function getInfo(){
     let a=document.getElementById("Name"); 
     let b=document.getElementById("characterClass");
     let c=document.getElementById("level");
@@ -216,15 +196,24 @@ function getInfo(){
     SpellSaveDC, spellAttackBonus, cantrips, lvl1, lvl2, lvl3, lvl4, lvl5, lvl6, lvl7, lvl8, lvl9); 
     charArray.push(char);
 
-    // I don't know how I did it but this somehow let me print stuff to the character page, but its really messy
-    // when it shows up
-    let html = "";
-    let entries = Object.entries(char);
-    html += entries;
-    document.getElementById("creation").innerHTML = html;
-    console.log(str);
-
+    let url = "/postingThis"
+    console.log(JSON.stringify(char))
+    let response = await fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(char)
+    })
+    let linebreak = document.createElement("br")  
+    let result = await response.json();
+    console.log(result);
+    let confirmation = document.querySelector("#confirmation");
+    confirmation.append("Saved a Character ")
+    confirmation.append(linebreak)
     return char; 
+
+
     }else if (h.value=="NPC"){
     let npc="";
     npc=new Npc(name, Class, level, playername, race, alignment, experience, proficiency, stats, mods, perception, 
@@ -232,15 +221,22 @@ function getInfo(){
     SpellSaveDC, spellAttackBonus, cantrips, lvl1, lvl2, lvl3, lvl4, lvl5, lvl6, lvl7, lvl8, lvl9); 
     NpcArray.push(npc);
 
-    // I did the same thing for the npc section, There's no visible difference because This is only printing 
-    // the "object" which is named either character or npc
-
-    let html = "";
-    let entries = Object.entries(npc);
-    html += entries;
-    document.getElementById("creation").innerHTML = html;
-    console.log(str);
-
+    let url = "/postingThis"
+    console.log(JSON.stringify(npc))
+    let response = await fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(npc)
+    })
+    let result = await response.json();
+    let linebreak = document.createElement("br")  
+    console.log(result);
+    const confirmation = document.querySelector("#confirmation");
+    document.createElement("br");
+    confirmation.append("Saved an NPC");
+    confirmation.append(linebreak)
     return npc;    
     }
 }
