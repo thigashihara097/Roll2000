@@ -1,7 +1,6 @@
 /* List of things to do:
-    Add a list of characters on the board (in the backend)
-    When you right-click on a cell it pulls up a pop up
-
+    When you double click on a cell it pulls up a pop up
+    Get board to persist between page swaps
 */
 
 addEventListener("DOMContentLoaded", main);
@@ -94,9 +93,6 @@ function main() {
     function addTable() {
         let t = document.createElement("table");
         document.body.querySelector("main").querySelector("div").appendChild(t);
-
-        // Add an event listener for changing cells to walls
-        t.addEventListener("click", wallVisual);
     }
 
     // DOM manipulation function - Add rows to the table
@@ -115,6 +111,10 @@ function main() {
         c.appendChild(p);
         p.textContent = content;
 
+        // Create popover menu
+        makePopover(c, "Cell Actions", "I'm a popover");
+
+        // Drag and drop events
         c.addEventListener("dragover", dragOver);
         c.addEventListener("drop", drop);
     }
@@ -127,6 +127,20 @@ function main() {
         } else {
             c.classList.remove("wall");
         }
+    }
+
+    // DOM manipulation function - Creates a popover menu for the passed in element
+    function makePopover(elem, head, text) {
+        elem.setAttribute("data-bs-toggle", "popover");
+        elem.setAttribute("title", head);
+        elem.setAttribute("data-bs-content", text);
+        elem.setAttribute("data-bs-placement", "bottom");
+
+        // Popover enabling
+        var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+        var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+        return new bootstrap.Popover(popoverTriggerEl)
+    })
     }
 
 
