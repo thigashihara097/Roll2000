@@ -112,7 +112,7 @@ function main() {
         p.textContent = content;
 
         // Create popover menu
-        makePopover(c);
+        makePopover(c, "Cell Actions", "I'm a popover");
 
         // Drag and drop events
         c.addEventListener("dragover", dragOver);
@@ -130,10 +130,10 @@ function main() {
     }
 
     // DOM manipulation function - Creates a popover menu for the passed in element
-    function makePopover(elem) {
+    function makePopover(elem, head, text) {
         elem.setAttribute("data-bs-toggle", "popover");
-        elem.setAttribute("title", "Cell Actions");
-        elem.setAttribute("data-bs-content", "I'm a popover");
+        elem.setAttribute("title", head);
+        elem.setAttribute("data-bs-content", text);
         elem.setAttribute("data-bs-placement", "bottom");
 
         // Popover enabling
