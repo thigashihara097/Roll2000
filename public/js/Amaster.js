@@ -750,7 +750,10 @@ function main() {
         elem.setAttribute("title", head);
         elem.setAttribute("data-bs-content", text);
         elem.setAttribute("data-bs-placement", "bottom");
-
+        var temp=prompt("begin combat? Y/N");
+        if(temp==="Y"){
+            initList(charList);
+        }
         // Popover enabling
         var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
         var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
