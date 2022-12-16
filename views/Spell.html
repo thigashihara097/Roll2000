@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Characters</title>
+        <script src="/js/Amaster.js"></script>
+        <link href="/css/style.css" rel="stylesheet">
+    </head>
+<body>
+<h1>Add a New Spell</h1>
+
+<!-- This is the navigation bar -->
+<div class="nav">
+    <a class="home" href="/">Home</a>
+    <a href="/character">Characters/NPCs</a>
+    <a href="/Spell">Spells</a>
+    <a href="/boardMaker">My Maps</a>
+    <a class="account" href="#account">Create New Account</a>
+    <a class="inLog" href="#logIn">Log In</a>
+</div>
+
+<p>
+    <label for="spellName" >Spell Name:</label>
+    <input type="text" id="spellName" required>
+
+    <label for="spellText">Spell Details:</label>
+    <textarea id="spellText" rows="4" cols="50" placeholder="This is where information about the text is put.">
+    </textarea>
+
+    <label for="spellSchool">School:</label>
+    <select name="spellSchool" id="spellSchool">
+        <option value="Classless" selected>Classless</option>
+        <option value="Abjuration">Abjuration</option>
+        <option value="Conjuration">Conjuration</option>
+        <option value="Divination">Divination</option>
+        <option value="Enchantment">Enchantment</option>
+        <option value="Evocation">Evocation</option>
+        <option value="Illusion">Illusion</option>
+        <option value="Necromancy">Necromancy</option>
+        <option value="Transmutation">Transmutation</option>
+    </select> 
+
+    <label for="spellLevel">Level:</label>
+    <input type="number" id="spellLevel" step="1" min="0" max="9">
+
+    <label for="spellSlot">Level:</label>
+    <input type="number" id="spellSlot" step="1" min= document.input.spellLevel max="9">
+    <!-- minimum is set as given spell value as spells cannot be put in a slot lower than their level-->
+</p>
+
+<p>
+    <label for="attackCheck">This Spell is an Attack:</label>
+    <input type="checkbox" id="attackCheck" onclick="spellIsAttackData()">
+</p>
+
+<p id = "hiddenAttackChoices">
+    <label for="attackDieFaces">Number of Faces on Die Used:</label>
+    <input type="number" id="attackDieFaces" step="1" min="4">
+
+    <label for="attackDieBase">Base Number of Attack Die:</label>
+    <input type="number" id="attackDieBase" step="1" min="1">
+
+    <label for="levelDieAdditions">Number of Additional Die per Level:</label>
+    <input type="number" id="levelDieAdditions" step="1" min="0">
+
+    <label for="savingThrow">Saving Throw Used:</label>
+    <select name="savingThrow" id="savingThrow">
+        <option value="strength">Strength</option>
+        <option value="dexterity">Dexterity</option>
+        <option value="constitution">Constitution</option>
+        <option value="intellegence">Intellegence</option>
+        <option value="wisdom">Wisdom</option>
+        <option value="charisma">Charisma</option>
+    </select> 
+</p>
+<p>
+    <div style="float:left;">
+        <label for="castingTime">Casting Time:</label>
+        <input type="number" id="castingTime" step="1" min="0">
+    </div>
+    <!-- zero will default casting time type to instantaneous-->
+
+    <div>
+        <label for="castingTimeType">Casting Time Type:</label>
+        <select name="castingTimeType" id="castingTimeType">
+            <option value="rounds">Rounds</option>
+            <option value="minutes">Minutes</option>
+            <option value="hours">Hours</option>
+            <option value="days">Days</option>
+            <option value="months">Months</option>
+            <option value="years">Years</option>
+         </select> 
+    </div>
+    <div style="clear:both;">&nbsp;</div>
+
+    <label for="hasRitual">Has Ritual:</label>
+    <input type="checkbox" id="hasRitual">
+
+    <div style="float:left;">
+        <label for="range">Range:</label>
+        <input type="number" id="range" step="1" min="0">
+    </div>
+    <!-- zero will default range type to self-->
+
+    <div>
+        <label for="rangeType">Range Type:</label>
+        <select name="rangeType" id="rangeType">
+            <option value="touch">Touch</option>
+            <option value="ranged">Ranged</option>
+            <option value="area of effect">Area of Effect</option>
+            <option value="cone of effect">Cone of Effect</option>
+            <option value="cube of effect">Cube of Effect</option>
+            <option value="cylinder of effect">Cylinder of Effect</option>
+            <option value="line of effect">Line of Effect</option>
+            <option value="sphere of effect">Sphere of Effect</option>
+         </select> 
+    </div>
+    <div style="clear:both;">&nbsp;</div>
+
+    <label for="castingCost">Casting Cost:</label>
+    <select name="castingCost" id="castingCost" onclick ="spellHasDuration()">
+        <option value="single action">Single Action</option>
+        <option value="bonus action">Bonus Action</option>
+        <option value="duration of concentration">Duration of Concentration</option>
+    </select> 
+</p>
+<p id = "hiddenDurationChoices">
+    <div style="float:left;">
+        <label for="duration">Duration of Spell Effect:</label>
+        <input type="number" id="duration" min="0">
+    </div>
+    <!-- zero will default duration to instantaneous-->
+
+    <div>
+        <label for="durationType">Duration Type:</label>
+        <select name="durationType" id="durationType">
+            <option value="rounds">Rounds</option>
+            <option value="minutes">Minutes</option>
+            <option value="hours">Hours</option>
+            <option value="days">Days</option>
+            <option value="months">Months</option>
+            <option value="years">Years</option>
+         </select> 
+    </div>
+    <div style="clear:both;">&nbsp;</div>
+</p>
+
+<p>
+    <label for="verbalComponent">This Spell Has a Verbal Component:</label>
+    <input type="checkbox" id="verbalComponent">
+
+    <label for="somaticComponent">This Spell Has a Somatic Component:</label>
+    <input type="checkbox" id="somaticComponent">
+
+    <label for="materialComponent">This Spell Has a Material Component:</label>
+    <input type="checkbox" id="materialComponent" onclick ="spellHasMaterialComponents()">
+    <div id = "hiddenMaterialComponents">
+        <label for ="individualComponent">Add a Material by Pressing Enter</label>
+        <input type="text" id="individualComponent" onkeypress = "addMaterial()">
+        <h4>
+            Materials:
+        </h4>
+        <div id = "materialList">
+        </div>
+    </div>
+</p>
+<p>
+    <label for="hasSubClassList">This Spell Has Subclasses:</label>
+    <input type="checkbox" id="hasSubClassList" onclick ="spellHasSubclasses()">
+    <div id = "hiddenSubClassComponents">
+        <label for ="subclass">Add a Material by Pressing Enter</label>
+        <input type="text" id="subclass" onkeypress = "addSubclass()">
+        <h4>
+            Subclasses:
+        </h4>
+        <div id = "subClassList">
+        </div>
+    </div>
+</p>
+
+
+<!-- Save a spell to server-->
+<button id="submit">Save</button>
+<!-- Confirmation that the post was successful -->
+<div id="confirmation"></div>
+</body>
+</html>
