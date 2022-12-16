@@ -729,7 +729,7 @@ function main() {
         p.textContent = content;
 
         // Create popover menu
-        makePopover(c, "Cell Actions", "I'm a popover");
+        // makePopover(c, "Cell Actions", "I'm a popover");
 
         // Drag and drop events
         c.addEventListener("dragover", dragOver);
