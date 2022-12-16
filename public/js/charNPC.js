@@ -175,8 +175,8 @@ async function getInfo(){
         calc=(num-10)/2;
          mods.push(Math.round(calc));
     }
-    let perception=10+Skills[11];
-    perception=perception+mods[4];
+    let perception=10+mods[4];
+    perception=perception+=Skills[11];
     const name=a.value;
     const Class=b.value;
     const level=c.value;
