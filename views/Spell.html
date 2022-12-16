@@ -53,7 +53,7 @@
     <input type="checkbox" id="attackCheck" onclick="spellIsAttackData()">
 </p>
 
-<p id = "hiddenAttackChoices">
+<p id = "hiddenAttackChoices" style="display:none">
     <label for="attackDieFaces">Number of Faces on Die Used:</label>
     <input type="number" id="attackDieFaces" step="1" min="4">
 
@@ -124,7 +124,7 @@
         <option value="duration of concentration">Duration of Concentration</option>
     </select> 
 </p>
-<p id = "hiddenDurationChoices">
+<p id = "hiddenDurationChoices" style="display:none">
     <div style="float:left;">
         <label for="duration">Duration of Spell Effect:</label>
         <input type="number" id="duration" min="0">
@@ -154,7 +154,7 @@
 
     <label for="materialComponent">This Spell Has a Material Component:</label>
     <input type="checkbox" id="materialComponent" onclick ="spellHasMaterialComponents()">
-    <div id = "hiddenMaterialComponents">
+    <div id = "hiddenMaterialComponents" style="display:none">
         <label for ="individualComponent">Add a Material by Pressing Enter</label>
         <input type="text" id="individualComponent" onkeypress = "addMaterial()">
         <h4>
@@ -167,7 +167,7 @@
 <p>
     <label for="hasSubClassList">This Spell Has Subclasses:</label>
     <input type="checkbox" id="hasSubClassList" onclick ="spellHasSubclasses()">
-    <div id = "hiddenSubClassComponents">
+    <div id = "hiddenSubClassComponents" style="display:none">
         <label for ="subclass">Add a Material by Pressing Enter</label>
         <input type="text" id="subclass" onkeypress = "addSubclass()">
         <h4>
