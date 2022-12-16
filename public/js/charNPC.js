@@ -10,7 +10,7 @@ save.addEventListener("click", getInfo);
 //Need to add death s and money but otherwise done
 
 class Character{
-constructor(name, Class, level, dmname, race, alignment, experince, proficiency,stats, modArray, perception, 
+constructor(name, Class, level, dmname, race, alignment, experince, proficiency,stats, modArray, perceptionSkills, 
 inspiration, aC, hp, movSpeed, initiative, profLang, spellCastingClass, saveThrows, savedEQ, Skills, 
 spellCastingAbility, SpellSaveDC, spellAttackBonus, cantrips, lvl1, lvl2, lvl3, lvl4, lvl5,
  lvl6, lvl7, lvl8, lvl9){
@@ -29,7 +29,7 @@ this.proficiency=5;
 this.proficiency=6;    
 }
 this.stats=stats; this.modArray=modArray;
-this.perception=perception; this.inspiration=inspiration; this.aC=aC; 
+this.perceptionSkills=perceptionSkills; this.inspiration=inspiration; this.aC=aC; 
 this.hp=hp;
 this.movSpeed=movSpeed;
 this.initiative=initiative;
@@ -55,11 +55,11 @@ this.lvl9=lvl9;
 }
 
 class Npc extends Character{
-constructor(name, Class, level, dmname, race, alignment, experince, proficiency, stats, modArray, perception, 
+constructor(name, Class, level, dmname, race, alignment, experince, proficiency, stats, modArray, perceptionSkills, 
 inspiration, aC, hp, movSpeed, initiative, profLang, spellCastingClass, saveThrows, savedEQ, Skills, 
 spellCastingAbility, SpellSaveDC, spellAttackBonus, cantrips, lvl1, lvl2, lvl3, lvl4, lvl5, lvl6, 
 lvl7, lvl8, lvl9){
-super(name, Class, level, dmname, race, alignment, experince, proficiency, stats, modArray, perception, 
+super(name, Class, level, dmname, race, alignment, experince, proficiency, stats, modArray, perceptionSkills, 
 inspiration, aC, hp, movSpeed, initiative, profLang, spellCastingClass, saveThrows, savedEQ, Skills, 
 spellCastingAbility, SpellSaveDC, spellAttackBonus, cantrips, lvl1, lvl2, lvl3, lvl4, lvl5, 
 lvl6, lvl7, lvl8, lvl9); 
@@ -175,7 +175,8 @@ async function getInfo(){
         calc=(num-10)/2;
          mods.push(Math.round(calc));
     }
-    const perception=(10+mods[4])+Skills[11];
+    const perception=10+mods[4];
+    const perceptionSkills=perception+Skills[11];
     const name=a.value;
     const Class=b.value;
     const level=c.value;
@@ -191,7 +192,7 @@ async function getInfo(){
     const NpcArray=[];
     if (h.value=="Character"){
     let char = "";
-    char=new Character(name, Class, level, playername, race, alignment, experience, proficiency, stats, mods, perception, 
+    char=new Character(name, Class, level, playername, race, alignment, experience, proficiency, stats, mods, perceptionSkills, 
     inspiration, aC, hp, movSpeed, initiative, profLang, spellCastingClass, saveThrows, savedEQ, Skills, spellCastingAbility, 
     SpellSaveDC, spellAttackBonus, cantrips, lvl1, lvl2, lvl3, lvl4, lvl5, lvl6, lvl7, lvl8, lvl9); 
     charArray.push(char);
@@ -216,7 +217,7 @@ async function getInfo(){
 
     }else if (h.value=="NPC"){
     let npc="";
-    npc=new Npc(name, Class, level, playername, race, alignment, experience, proficiency, stats, mods, perception, 
+    npc=new Npc(name, Class, level, playername, race, alignment, experience, proficiency, stats, mods, perceptionSkills, 
     inspiration, aC, hp, movSpeed, initiative, profLang, spellCastingClass, saveThrows, savedEQ, Skills, spellCastingAbility, 
     SpellSaveDC, spellAttackBonus, cantrips, lvl1, lvl2, lvl3, lvl4, lvl5, lvl6, lvl7, lvl8, lvl9); 
     NpcArray.push(npc);
