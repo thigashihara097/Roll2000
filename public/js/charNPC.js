@@ -29,16 +29,18 @@ this.proficiency=5;
 this.proficiency=6;    
 }
 this.stats=stats; this.modArray=modArray;
-this.perception=perception; this.inspiration=inspiration; this.aC=aC; 
+this.Skills=Skills;
+if(this.Skills[11]!=0){
+   this.perception=perception+=this.proficiency;
+}else{
+this.perception=perception;   
+}
+this.inspiration=inspiration; this.aC=aC; 
 this.hp=hp;
 this.movSpeed=movSpeed;
 this.initiative=initiative;
 this.profLang=profLang;
 this.saveThrows=saveThrows;
-this.Skills=Skills;
-if(this.Skills[11]!=0){
-this.perception+=this.proficiency;
-}
 this.savedEQ=savedEQ;
 this.spellCastingClass=spellCastingClass;
 this.spellCastingAbility=spellCastingAbility; 
