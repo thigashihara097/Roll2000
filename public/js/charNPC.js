@@ -36,6 +36,9 @@ this.initiative=initiative;
 this.profLang=profLang;
 this.saveThrows=saveThrows;
 this.Skills=Skills;
+if(this.Skills[11]!=0){
+this.perception+=this.proficiency;
+}
 this.savedEQ=savedEQ;
 this.spellCastingClass=spellCastingClass;
 this.spellCastingAbility=spellCastingAbility; 
@@ -175,11 +178,7 @@ async function getInfo(){
         calc=(num-10)/2;
          mods.push(Math.round(calc));
     }
-    let perception=10; 
-    let num1=mods[4];
-    let num2=Skills[11];
-    let sum=num1+num2;
-    perception+=sum;
+    let perception=10+mods[4]; 
     const name=a.value;
     const Class=b.value;
     const level=c.value;
