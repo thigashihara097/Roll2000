@@ -178,8 +178,8 @@ async function getInfo(){
     let perception=10; 
     let num1=mods[4];
     let num2=Skills[11];
-    var sum=perception+num1+num2;
-    perception=sum;
+    let sum=num1+num2;
+    perception+=sum;
     const name=a.value;
     const Class=b.value;
     const level=c.value;
