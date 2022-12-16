@@ -133,6 +133,8 @@ function cast(spell, targets){
  this.profLang=profLang;
  this.saveThrows=saveThrows;
  this.Skills=Skills;
+ if(this.Skills[11]!=0){
+    this.perception+=this.proficiency;}
  this.savedEQ=savedEQ;
  this.spellCastingClass=spellCastingClass;
  this.spellCastingAbility=spellCastingAbility; 
@@ -276,7 +278,7 @@ function cast(spell, targets){
          calc=(num-10)/2;
           mods.push(Math.round(calc));
      }
-     const perception=(10+mods[4])+Skills[11];
+     const perception=10+mods[4];
      const name=a.value;
      const Class=b.value;
      const level=c.value;
