@@ -35,6 +35,11 @@ app.get("/character", (req, res) => {
     res.sendFile(__dirname + '/views/character.html');
 })
 
+// Route to spell
+app.get("/Spell", (req, res) => {
+    res.sendFile(__dirname + '/views/Spell.html');
+})
+
 // Post to server
 app.post("/postingThis", (req, res) => {
     console.log(req.body);
